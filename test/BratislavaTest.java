@@ -38,12 +38,23 @@ public class BratislavaTest {
         Maaltid lePapillonMaaltid = getLePapillonMaaltid(mads, marie, paal, sofie);
         tur.addMaaltid(lePapillonMaaltid);
 
-        assertThat(tur.getUtestaaende(mads), is(createSum(-20, 28)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(8, 52)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(8, 52)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(3, 22)));
+        assertThat(tur.getUtestaaende(mads), is(createSum(-20, 275)));
+        assertThat(tur.getUtestaaende(marie), is(createSum(8, 525)));
+        assertThat(tur.getUtestaaende(paal), is(createSum(8, 525)));
+        assertThat(tur.getUtestaaende(sofie), is(createSum(3, 225)));
         assertThat(tur.getSum(), is(createSum(31, 20)));
-        assertThat(tur.sumOffset(), is(0));
+        assertThat(tur.sumOffset(), is(Sum.empty));
+    }
+
+    @Test
+    public void getUtestaaendeForRedLion3060() {
+        Tur tur = new Tur();
+        tur.addDeltakarar(mads, marie, paal, sofie, freddy, lorents, edvard);
+
+        Maaltid redLionMaaltid = getTheRedLionMaaltid(mads, marie, paal, sofie, lorents, edvard, freddy);
+        tur.addMaaltid(redLionMaaltid);
+        assertThat(tur.getSum(), is(createSum(30, 60)));
+        assertThat(tur.sumOffset(), is(Sum.empty));
     }
 
     private Sum createSum(int heltall, int fraction) {
@@ -58,80 +69,80 @@ public class BratislavaTest {
         Maaltid lePapillonMaaltid = getLePapillonMaaltid(mads, marie, paal, sofie);
         tur.addMaaltid(lePapillonMaaltid);
 
-        assertThat(tur.getUtestaaende(mads), is(createSum(-20, 28)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(8, 52)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(8, 52)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(3, 22)));
+        assertThat(tur.getUtestaaende(mads), is(createSum(-20, 275)));
+        assertThat(tur.getUtestaaende(marie), is(createSum(8, 525)));
+        assertThat(tur.getUtestaaende(paal), is(createSum(8, 525)));
+        assertThat(tur.getUtestaaende(sofie), is(createSum(3, 225)));
         assertThat(tur.getSum(), is(createSum(31, 20)));
 
-        assertThat(tur.sumOffset(), is(0));
+        assertThat(tur.sumOffset(), is(Sum.empty));
 //        lePapillonMaaltid.print();
 
         Maaltid redLion = getTheRedLionMaaltid(mads, marie, paal, sofie, lorents, edvard, freddy);
         tur.addMaaltid(redLion);
 
-        assertThat(tur.getUtestaaende(mads), is(createSum(-47, 38)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(11, 82)));
+        assertThat(tur.getUtestaaende(mads), is(createSum(-47, 375)));
+        assertThat(tur.getUtestaaende(paal), is(createSum(11, 825)));
         assertThat(tur.getUtestaaende(lorents), is(createSum(3, 20)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(14, 42)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(6, 12)));
+        assertThat(tur.getUtestaaende(marie), is(createSum(14, 425)));
+        assertThat(tur.getUtestaaende(sofie), is(createSum(6, 125)));
         assertThat(tur.getUtestaaende(edvard), is(createSum(5, 90)));
         assertThat(tur.getUtestaaende(freddy), is(createSum(5, 90)));
 //        redLion.print();
 
         assertThat(tur.getSum(), is(createSum(61, 80)));
-        assertThat(tur.sumOffset(), is(0));
+        assertThat(tur.sumOffset(), is(Sum.empty));
 
         Maaltid kontaktMaaltid = getKontaktMaaltid();
         tur.addMaaltid(kontaktMaaltid);
 
-        assertThat(tur.getUtestaaende(mads), is(createSum(-39, 8)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(17, 12)));
+        assertThat(tur.getUtestaaende(mads), is(createSum(-39, 675)));
+        assertThat(tur.getUtestaaende(paal), is(createSum(17, 125)));
         assertThat(tur.getUtestaaende(lorents), is(createSum(9, 40)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(18, 92)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(9, 12)));
-        assertThat(tur.getUtestaaende(edvard), is(createSum(-26, 20)));
+        assertThat(tur.getUtestaaende(marie), is(createSum(18, 925)));
+        assertThat(tur.getUtestaaende(sofie), is(createSum(9, 125)));
+        assertThat(tur.getUtestaaende(edvard), is(createSum(-26, 40)));
         assertThat(tur.getUtestaaende(freddy), is(createSum(11, 50)));
         assertThat(tur.getSum(), is(createSum(99, 70)));
-        assertThat(tur.sumOffset(), is(0));
+        assertThat(tur.sumOffset(), is(Sum.empty));
 
         Maaltid ufoMaaltid = getUFOMaaltid();
    //     ufoMaaltid.print();
         tur.addMaaltid(ufoMaaltid);
-        assertThat(tur.getUtestaaende(mads), is(createSum(-34, 98)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(24, 62)));
-        assertThat(tur.getUtestaaende(lorents), is(createSum(-31, 25)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(26, 42)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(12, 77)));
-        assertThat(tur.getUtestaaende(edvard), is(createSum(-18, 85)));
+        assertThat(tur.getUtestaaende(mads), is(createSum(-33, 775)));
+        assertThat(tur.getUtestaaende(paal), is(createSum(24, 625)));
+        assertThat(tur.getUtestaaende(lorents), is(createSum(-32, 45)));
+        assertThat(tur.getUtestaaende(marie), is(createSum(26, 425)));
+        assertThat(tur.getUtestaaende(sofie), is(createSum(12, 775)));
+        assertThat(tur.getUtestaaende(edvard), is(createSum(-17, 75)));
         assertThat(tur.getUtestaaende(freddy), is(createSum(20, 15)));
         assertThat(tur.getSum(), is(createSum(147, 45)));
-        assertThat(tur.sumOffset(), is(0));
+        assertThat(tur.sumOffset(), is(Sum.empty));
 
         Maaltid urbanSpaceMaaltid = getUrbanSpaceMaaltid();
        // urbanSpaceMaaltid.print();
         tur.addMaaltid(urbanSpaceMaaltid);
-        assertThat(tur.getUtestaaende(mads), is(createSum(-20, 14)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(37, 78)));
-        assertThat(tur.getUtestaaende(lorents), is(createSum(-31, 25)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(-31, 56)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(12, 77)));
-        assertThat(tur.getUtestaaende(edvard), is(createSum(0, 1)));
+        assertThat(tur.getUtestaaende(mads), is(createSum(-20, 615)));
+        assertThat(tur.getUtestaaende(paal), is(createSum(37, 785)));
+        assertThat(tur.getUtestaaende(lorents), is(createSum(-32, 45)));
+        assertThat(tur.getUtestaaende(marie), is(createSum(-30, 715)));
+        assertThat(tur.getUtestaaende(sofie), is(createSum(12, 775)));
+        assertThat(tur.getUtestaaende(edvard), is(createSum(0, -59)));
         assertThat(tur.getUtestaaende(freddy), is(createSum(33, 81)));
         assertThat(tur.getSum(), is(createSum(217, 83)));
-        assertThat(tur.sumOffset(), is(0));
+        assertThat(tur.sumOffset(), is(Sum.empty));
 
         Maaltid kanin = getKaninMaaltid();
 //        kanin.print();
         tur.addMaaltid(kanin);
-        assertThat(tur.getUtestaaende(mads), is(createSum(-35, 19)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(-6, 28)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(-15, 33)));
-        assertThat(tur.getUtestaaende(lorents), is(createSum(2, 20)));
-        assertThat(tur.getUtestaaende(edvard), is(createSum(12, 22)));
-        assertThat(tur.getUtestaaende(freddy), is(createSum(33, 59)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(13, 22)));
-        assertThat(tur.sumOffset(), is(0));
+        assertThat(tur.getUtestaaende(mads), is(createSum(-35, 658)));
+        assertThat(tur.getUtestaaende(marie), is(createSum(-5, 988)));
+        assertThat(tur.getUtestaaende(paal), is(createSum(-15, 758)));
+        assertThat(tur.getUtestaaende(lorents), is(createSum(0, 507)));
+        assertThat(tur.getUtestaaende(edvard), is(createSum(11, 627)));
+        assertThat(tur.getUtestaaende(freddy), is(new Sum(32.037)));
+        assertThat(tur.getUtestaaende(sofie), is(createSum(12, 332)));
+        assertThat(tur.sumOffset(), is(new Sum(-0.9))); // Her betalte vi 90 cent ekstra, som ikkje er fjerna frå innskot
 
        // Maaltid ucetMaaltid = getUcetMaaltid(); TODO
        // ucetMaaltid.print();
@@ -173,26 +184,26 @@ public class BratislavaTest {
                 makovesulanceDessertMads, makovesulanceDessertPaal, makovesulanceDessertLorents, cokotortaDessert,
                 kaffe, baileys, service);
         assertThat(kaninMaaltid.getSum(), is(createSum(246, 10)));
-        assertThat(kaninMaaltid.getUtestaaende(mads), is(createSum(34, 95)));
-        assertThat(kaninMaaltid.getUtestaaende(marie), is(createSum(34, 72)));
-        assertThat(kaninMaaltid.getUtestaaende(paal), is(createSum(36, 45)));
-        assertThat(kaninMaaltid.getUtestaaende(lorents), is(createSum(32, 95)));
-        assertThat(kaninMaaltid.getUtestaaende(edvard), is(createSum(44, 21)));
-        assertThat(kaninMaaltid.getUtestaaende(freddy), is(createSum(38, 22)));
-        assertThat(kaninMaaltid.getUtestaaende(sofie), is(createSum(24, 55)));
+        assertThat(kaninMaaltid.getUtestaaende(mads), is(createSum(34, 957)));
+        assertThat(kaninMaaltid.getUtestaaende(marie), is(createSum(34, 727)));
+        assertThat(kaninMaaltid.getUtestaaende(paal), is(createSum(36, 457)));
+        assertThat(kaninMaaltid.getUtestaaende(lorents), is(createSum(32, 957)));
+        assertThat(kaninMaaltid.getUtestaaende(edvard), is(createSum(44, 217)));
+        assertThat(kaninMaaltid.getUtestaaende(freddy), is(createSum(38, 227)));
+        assertThat(kaninMaaltid.getUtestaaende(sofie), is(createSum(24, 557)));
         kaninMaaltid.addBetaling(freddy, createSum(40, 0));
         kaninMaaltid.addBetaling(sofie, createSum(25, 0));
         kaninMaaltid.addBetaling(edvard, createSum(32, 0));
         kaninMaaltid.addBetaling(mads, createSum(50, 0));
         kaninMaaltid.addBetaling(paal, createSum(90, 0));
         kaninMaaltid.addBetaling(marie, createSum(10, 0));
-        assertThat(kaninMaaltid.getUtestaaende(mads), is(createSum(-15, 5)));
-        assertThat(kaninMaaltid.getUtestaaende(lorents), is(createSum(32, 95)));
-        assertThat(kaninMaaltid.getUtestaaende(sofie), is(createSum(0, 45)));
-        assertThat(kaninMaaltid.getUtestaaende(marie), is(createSum(24, 72)));
-        assertThat(kaninMaaltid.getUtestaaende(edvard), is(createSum(12, 21)));
-        assertThat(kaninMaaltid.getUtestaaende(freddy), is(createSum(-1, 78)));
-        assertThat(kaninMaaltid.getUtestaaende(paal), is(createSum(-53, 55)));
+        assertThat(kaninMaaltid.getUtestaaende(mads), is(new Sum(-15.043)));
+        assertThat(kaninMaaltid.getUtestaaende(lorents), is(createSum(32, 957)));
+        assertThat(kaninMaaltid.getUtestaaende(sofie), is(createSum(0, -443)));
+        assertThat(kaninMaaltid.getUtestaaende(marie), is(createSum(24, 727)));
+        assertThat(kaninMaaltid.getUtestaaende(edvard), is(createSum(12, 217)));
+        assertThat(kaninMaaltid.getUtestaaende(freddy), is(createSum(-1, 773)));
+        assertThat(kaninMaaltid.getUtestaaende(paal), is(createSum(-53, 543)));
         //TODO endre uteståande-logikken til å ta høgde for delvise betalingar
         return kaninMaaltid;
     }
@@ -324,6 +335,13 @@ public class BratislavaTest {
         Maaltid redLion = new Maaltid(londonPride, luckyBastard, zlatyBazant, mojitoMarie, mojitoEdvard, pinaColada, kaltenecker);
         redLion.setBetaler(mads);
         assertThat(redLion.getSum(), is(createSum(30, 60)));
+        assertThat(redLion.getUtestaaende(mads), is(createSum(-27, 10)));
+        assertThat(redLion.getUtestaaende(marie), is(createSum(5, 90)));
+        assertThat(redLion.getUtestaaende(paal), is(createSum(3, 30)));
+        assertThat(redLion.getUtestaaende(sofie), is(createSum(2, 90)));
+        assertThat(redLion.getUtestaaende(lorents), is(createSum(3, 20)));
+        assertThat(redLion.getUtestaaende(edvard), is(createSum(5, 90)));
+        assertThat(redLion.getUtestaaende(freddy), is(createSum(5, 90)));
         return redLion;
     }
 
@@ -341,6 +359,10 @@ public class BratislavaTest {
                 new Maaltid(kasteelBarista, zlatyBazant, cappucino, caffeLatte, cubaCake1, cubaCake2, brownieCake, serviceCharge);
         maaltid.setBetaler(mads);
         assertThat(maaltid.getSum(), is(createSum(31, 20)));
+        assertThat(maaltid.getUtestaaende(mads), is(createSum(-20, 275)));
+        assertThat(maaltid.getUtestaaende(marie), is(createSum(8, 525)));
+        assertThat(maaltid.getUtestaaende(paal), is(createSum(8, 525)));
+        assertThat(maaltid.getUtestaaende(sofie), is(createSum(3, 225)));
         return maaltid;
     }
 }

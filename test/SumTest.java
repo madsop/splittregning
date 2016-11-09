@@ -40,4 +40,9 @@ public class SumTest {
         assertThat(treSiffer, is(toSiffer));
     }
 
+    @Test
+    public void parseDouble() {
+        Double d = Double.parseDouble("1.90");
+    }
+
 }

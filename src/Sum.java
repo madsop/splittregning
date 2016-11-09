@@ -1,10 +1,22 @@
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 class Sum {
     static final Sum empty = new Sum(0, 0);
+
+    @Getter
+    private double verdi;
+
+    Sum(double verdi) {
+        this.verdi = verdi;
+    }
+
+    Sum(int heltall, int fraction) {
+        if (heltall == 0 && fraction < 0) {
+            verdi = Double.valueOf("-0." + Math.abs(fraction));
+            return;
+        }
+        verdi = Double.parseDouble(heltall + "." + fraction);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -13,87 +25,33 @@ class Sum {
 
         Sum sum = (Sum) o;
 
-        if (heltall != sum.heltall) return false;
-        return fraction == sum.fraction || this.minus(sum).equals(Sum.empty);
+        return Math.abs(sum.verdi - verdi) < 0.001;
     }
 
     @Override
     public int hashCode() {
-        int result = heltall;
-        result = 31 * result + fraction;
-        return result;
-    }
-
-    @Getter
-    private final int heltall;
-    private final int fraction;
-
-    private int getPresisjonsnivaaOere() {
-        return 100;
+        long temp = Double.doubleToLongBits(verdi);
+        return (int) (temp ^ (temp >>> 32));
     }
 
     Sum pluss(Sum b) {
-        int newHeltall = this.heltall + b.getHeltall();
-        int newFraction = this.heltall < 0 ? this.fraction - b.getFraction() :
-                this.fraction + b.getFraction();
-        while (newFraction >= getPresisjonsnivaaOere()) {
-            newHeltall++;
-            newFraction -= getPresisjonsnivaaOere();
-        }
-        while (newFraction < 0) {
-            if (newHeltall<0) {
-                newHeltall++;
-            }
-            else {
-                newHeltall--;
-            }
-
-            newFraction += getPresisjonsnivaaOere();
-        }
-        return new Sum(newHeltall, newFraction);
+        return new Sum(verdi + b.getVerdi());
     }
 
     Sum minus(Sum b) {
-        int newHeltall = this.heltall - b.getHeltall();
-
-        int thisFraction = this.fraction;
-        int bFraction = b.getFraction();
-        int lengthDiff = String.valueOf(bFraction).length() - String.valueOf(thisFraction).length();
-        if (lengthDiff == 1) {
-            thisFraction *= 10;
-        }
-        if (lengthDiff == -1) {
-            bFraction *= 10;
-        }
-
-        int newFraction = thisFraction - bFraction;
-        while (newFraction <= -getPresisjonsnivaaOere() || (newFraction < 0 && newHeltall >= 0)) {
-            newHeltall--;
-            newFraction += getPresisjonsnivaaOere();
-        }
-        newFraction = Math.abs(newFraction);
-        return new Sum(newHeltall, newFraction);
-    }
-
-    private int getFraction() {
-        return fraction;
+        return new Sum(verdi - b.getVerdi());
     }
 
     Sum delPaa(long antallDeltakarar) {
-        int heltall = (int) (this.heltall / antallDeltakarar);
-        int gjenstaaendeHeltall = (int) (this.heltall % antallDeltakarar);
-        int newFractionTotal = (gjenstaaendeHeltall * getPresisjonsnivaaOere()) + this.fraction;
-        int newFractionReturn = (int) (newFractionTotal/antallDeltakarar);
-        int toFractionDiff = newFractionTotal % newFractionReturn;
-        return new Sum(heltall, newFractionTotal);
+        return new Sum(verdi / antallDeltakarar);
     }
 
     Sum ganger(int i) {
-        return new Sum(heltall*i, fraction);
+        return new Sum(verdi*i);
     }
 
     @Override
     public String toString() {
-        return heltall + "." + fraction;
+        return String.valueOf(verdi);
     }
 }
