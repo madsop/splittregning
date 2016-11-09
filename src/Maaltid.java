@@ -70,10 +70,10 @@ class Maaltid {
         Set<Deltakar> deltakarSet = retter.stream().map(Rett::getDeltakar)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toSet());
-        Sum reduce = deltakarSet.stream().map(this::getUtestaaende).reduce(new Sum(0, 0), Sum::pluss);
-        if (!reduce.equals(Sum.empty)) {
+    //    Sum reduce = deltakarSet.stream().map(this::getUtestaaende).reduce(new Sum(0, 0), Sum::pluss);
+      //  if (!reduce.equals(Sum.empty)) {
        //TODO fiks     System.out.println(reduce);
-        }
+        //}
         return retter.stream().map(Rett::getBeloep).reduce(new Sum(0,0), Sum::pluss);
     }
 
@@ -97,7 +97,8 @@ class Maaltid {
         System.out.println(
                 "------------------------------------------- \n" +
                 "Måltid for " + getDeltakarar().map(Deltakar::getNamn).collect(Collectors.joining(", ")) +"\n"
-                + betaler + " betalte totalsummen på " + getSum() + ".\n"
+                + betalingar.stream().map(Betaling::toString).reduce("", (a, b) -> a + "\n" +b)
+                        + "\n betalte totalsummen på " + getSum() + ".\n\n"
                 + "Rettane var: \n"
                 + retter.stream().map(Object::toString).collect(Collectors.joining("\n"))
                 + "\n"
