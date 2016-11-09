@@ -31,18 +31,11 @@ class Maaltid {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
             return Sum.empty;
         }
-        //pseudo-ish:
-        // finn totalsum betalt a
-        // finn prisen deltakaren skulle betale b
-        // returner (a-b)*-1
         Sum betalt = betalingar.stream().filter(betaling -> deltakar.equals(betaling.getDeltakar()))
                 .map(Betaling::getSum).reduce(new Sum(0, 0), Sum::pluss);
         Sum skalBetaleFor = getUtestaaendeForEnSomIkkeBetalte(deltakar);
         return betalt.minus(skalBetaleFor).ganger(-1);
 
-       // return betalingar.stream().anyMatch(b -> b.getDeltakar().equals(deltakar)) ?
-         //       getUtestaaendeForDenSomBetalte(deltakar)
-     //           : getUtestaaendeForEnSomIkkeBetalte(deltakar);
     }
 
     private boolean deltokIkkePaaDetteMaaltidet(Deltakar deltakar) {
@@ -55,15 +48,6 @@ class Maaltid {
                 .map(Rett::getBeloep)
                 .reduce(new Sum(0,0), Sum::pluss)
                 .pluss(getSumPerPersonForFellesRett());
-    }
-
-    private Sum getUtestaaendeForDenSomBetalte(Deltakar deltakar) {
-        return retter.stream()
-                .filter(x -> !deltakar.equals(x.getDeltakar()))
-                .map(Rett::getBeloep)
-                .reduce(new Sum(0,0), Sum::pluss)
-                .minus(getSumPerPersonForFellesRett())
-                .ganger(-1);
     }
 
     Sum getSum() {

@@ -26,15 +26,14 @@ class Tur {
     }
 
     Sum getSum() {
-//        maaltider.stream().flatMap(x -> x.getUtestaaende())
-        return  reduce(maaltider.stream().map(Maaltid::getSum));
+        return reduce(maaltider.stream().map(Maaltid::getSum));
     }
 
     private Sum reduce(Stream<Sum> s) {
         return s.reduce(new Sum(0, 0), Sum::pluss);
     }
 
-    public Sum sumOffset() {
+    Sum sumOffset() {
         Stream<Sum> stream = deltakarar.stream().map(this::getUtestaaende);
         List<Sum> collect = stream.collect(Collectors.toList());
         Sum total = new Sum(0, 0);

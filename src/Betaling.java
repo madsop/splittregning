@@ -4,5 +4,4 @@ import lombok.Data;
 class Betaling {
     private final Deltakar deltakar;
     private final Sum sum;
-
 }
