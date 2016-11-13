@@ -1,11 +1,16 @@
+import lombok.Getter;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 class Maaltid {
+
+    @Getter
     private List<Rett> retter;
 
     private Deltakar betaler;
+    @Getter
     private Set<Betaling> betalingar;
 
     void addBetaling(Deltakar deltakar, Sum sum) {
@@ -33,7 +38,7 @@ class Maaltid {
         }
         Sum betalt = betalingar.stream().filter(betaling -> deltakar.equals(betaling.getDeltakar()))
                 .map(Betaling::getSum).reduce(new Sum(0, 0), Sum::pluss);
-        Sum skalBetaleFor = getUtestaaendeForEnSomIkkeBetalte(deltakar);
+        Sum skalBetaleFor = getBruktFor(deltakar);
         return betalt.minus(skalBetaleFor).ganger(-1);
 
     }
@@ -42,7 +47,7 @@ class Maaltid {
         return retter.stream().noneMatch(x -> deltakar.equals(x.getDeltakar()));
     }
 
-    private Sum getUtestaaendeForEnSomIkkeBetalte(Deltakar deltakar) {
+    Sum getBruktFor(Deltakar deltakar) {
         return retter.stream()
                 .filter(x -> deltakar.equals(x.getDeltakar()))
                 .map(Rett::getBeloep)
@@ -88,5 +93,12 @@ class Maaltid {
                 + "\n"
                 + "------------------------------------------- \n"
         );
+    }
+
+    Sum getBetaltFelles(Deltakar deltakar) {
+        if (deltokIkkePaaDetteMaaltidet(deltakar)) {
+            return Sum.empty;
+        }
+        return getSumPerPersonForFellesRett();
     }
 }

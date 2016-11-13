@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="io.javaslang:javaslang:2.0.4" type="repository">
+    <properties maven-id="io.javaslang:javaslang:2.0.4" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/javaslang/javaslang/2.0.4/javaslang-2.0.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/javaslang/javaslang-match/2.0.4/javaslang-match-2.0.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
