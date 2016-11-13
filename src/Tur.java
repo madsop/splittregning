@@ -95,6 +95,20 @@ class Tur {
                         .map(x -> "Måltid " +x +": " +x.getRetterFor(deltakar))
                         .collect(Collectors.joining("\n"))
         );
+        stringBuilder.append("\n Pluss delar i fellesrettar \n").append(
+                maaltider.stream()
+                        .filter(maaltid -> !maaltid.deltokIkkePaaDetteMaaltidet(deltakar))
+                        .filter(maaltid -> !maaltid.getRetterFelles(deltakar).isEmpty())
+                        .map(maaltid -> "Måltid " +maaltid +": " + getRettarForFellesPrint(deltakar, maaltid))
+                        .collect(Collectors.joining("\n"))
+        );
         print(stringBuilder);
+    }
+
+    private List<String> getRettarForFellesPrint(Deltakar deltakar, Maaltid x) {
+        return x.getRetterFelles(deltakar).stream()
+                .map(y ->
+                        y.getNamn() + ", andel " +
+                        y.getBeloep().delPaa(x.getAntallDeltakarar())).collect(Collectors.toList());
     }
 }

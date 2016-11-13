@@ -78,8 +78,6 @@ public class BratislavaTest {
         assertThat(tur.getTotaltBruktFelles(mads), is(new Sum(0, 725)));
         assertThat(tur.getTotaltBruktFelles(lorents), is(Sum.empty));
 
-        tur.printRapportFor(mads);
-        tur.printRapportFor(lorents);
         tur.printRapportMedRettarFor(mads);
         tur.printRapportMedRettarFor(lorents);
     }
@@ -163,18 +161,20 @@ public class BratislavaTest {
         Maaltid kanin = bratislavaMaaltidFactory.getKaninMaaltid();
 //        kanin.print();
         tur.addMaaltid(kanin);
-        assertThat(tur.getUtestaaende(mads), is(createSum(-35, 658)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(-5, 988)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(-15, 758)));
-        assertThat(tur.getUtestaaende(lorents), is(createSum(0, 507)));
-        assertThat(tur.getUtestaaende(edvard), is(createSum(11, 627)));
-        assertThat(tur.getUtestaaende(freddy), is(new Sum(32.037)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(12, 332)));
-        assertThat(tur.sumOffset(), is(new Sum(-0.9))); // Her betalte vi 90 cent ekstra, som ikkje er fjerna frå innskot
+        assertThat(tur.getUtestaaende(mads), is(createSum(-35, 529)));
+        assertThat(tur.getUtestaaende(marie), is(createSum(-5, 859)));
+        assertThat(tur.getUtestaaende(paal), is(createSum(-15, 629)));
+        assertThat(tur.getUtestaaende(lorents), is(createSum(0, 636)));
+        assertThat(tur.getUtestaaende(edvard), is(createSum(11, 756)));
+        assertThat(tur.getUtestaaende(freddy), is(new Sum(32.166)));
+        assertThat(tur.getUtestaaende(sofie), is(createSum(12, 461)));
+        assertThat(tur.sumOffset(), is(Sum.empty)); // Her betalte vi 90 cent ekstra, som ikkje er fjerna frå innskot
 
-       // Maaltid ucetMaaltid = getUcetMaaltid(); TODO
-       // ucetMaaltid.print();
         assertThat(tur.getTotaltBetalt(mads), is(new Sum(111, 80)));
         assertThat(tur.getTotaltBetalt(marie), is(new Sum(80, 38)));
+
+        // Maaltid ucetMaaltid = getUcetMaaltid(); TODO
+        // ucetMaaltid.print();
+        tur.printRapportMedRettarFor(mads);
     }
 }

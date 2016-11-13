@@ -89,7 +89,7 @@ class Maaltid {
                 .delPaa(getAntallDeltakarar());
     }
 
-    private long getAntallDeltakarar() {
+    long getAntallDeltakarar() {
         return getDeltakarar().count();
     }
 
@@ -119,5 +119,12 @@ class Maaltid {
 
     List<Rett> getRetterFor(Deltakar deltakar) {
         return retter.stream().filter(x -> deltakar.equals(x.getDeltakar())).collect(Collectors.toList());
+    }
+
+    List<Rett> getRetterFelles(Deltakar deltakar) {
+        if (deltokIkkePaaDetteMaaltidet(deltakar)) {
+            return Collections.emptyList();
+        }
+        return retter.stream().filter(x -> x.getDeltakar() == null).collect(Collectors.toList());
     }
 }

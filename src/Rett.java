@@ -1,7 +1,5 @@
 import lombok.Getter;
-import lombok.ToString;
 
-@ToString
 @Getter
 class Rett {
     private final String namn;
@@ -18,12 +16,12 @@ class Rett {
         this.deltakar = deltakar;
     }
 
-
     Rett(String namn, Sum sum, Deltakar deltakar) {
         this(sum, deltakar, namn);
     }
 
-    Rett(String namn, Sum sum, Deltakar deltakar, String dummy) {
-        this(sum, deltakar, namn);
+    @Override
+    public String toString() {
+        return namn + "(" + deltakar +", " +beloep +")";
     }
 }

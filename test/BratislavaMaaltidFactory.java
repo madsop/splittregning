@@ -20,74 +20,15 @@ class BratislavaMaaltidFactory {
         this.freddy = freddy;
     }
 
-    Maaltid getKaninMaaltid() {
-        Rett bonaqua = new Rett("Bonaqua", createSum(6, 0), null);
-        Rett slivovica = new Rett("Slivovica", createSum(20, 30), null);
-        Rett mangalica = new Rett(createSum(18, 90), mads, "");
-        Rett diviakPomarancVillsvinFreddy = new Rett(createSum(16, 90), freddy, "");
-        Rett diviakPomarancVillsvinPaal = new Rett(createSum(16, 90), paal, "");
-        Rett diviakPomarancVillsvinLorents = new Rett(createSum(16, 90), lorents, "");
-        Rett jahnacieLytkoKanin = new Rett(createSum(22, 90), edvard, "");
-        Rett kuraciSteakKylling = new Rett(createSum(10, 90), sofie, "");
-        Rett kralikNaVine = new Rett(createSum(13, 90), marie, "");
-        Rett zlatyBazantPaal = new Rett(createSum(2, 90), paal, "");
-        Rett zlatyBazantMads = new Rett(createSum(2, 90), mads, "");
-        Rett zlatyBazantLorents = new Rett(createSum(2, 90), lorents, "");
-        Rett vinFreddy = new Rett(createSum(7, 67), freddy, "");
-        Rett vinMarie = new Rett(createSum(7, 67), marie, "");
-        Rett vinEdvard = new Rett(createSum(7, 66), edvard, "");
-
-        Rett zmzrlinovyPoharDessertSofie = new Rett(createSum(4, 50), sofie, "");
-        Rett zmzrlinovyPoharDessertFreddy = new Rett(createSum(4, 50), freddy, "");
-        Rett zmzrlinovyPoharDessertEdvard = new Rett(createSum(4, 50), edvard, "");
-        Rett makovesulanceDessertMads = new Rett(createSum(4, 0), mads, "");
-        Rett makovesulanceDessertPaal = new Rett(createSum(4, 0), paal, "");
-        Rett makovesulanceDessertLorents = new Rett(createSum(4, 0), lorents, "");
-        Rett cokotortaDessert = new Rett(createSum(4, 0), marie, "");
-        Rett kaffe = new Rett(createSum(15, 40), null, "");
-        Rett baileys = new Rett(createSum(3, 50), paal, "");
-        Rett service = new Rett(createSum(22, 40), null, "");
-
-
-        Maaltid kaninMaaltid = new Maaltid(bonaqua, slivovica, mangalica, diviakPomarancVillsvinFreddy,
-                diviakPomarancVillsvinPaal, diviakPomarancVillsvinLorents, jahnacieLytkoKanin, kuraciSteakKylling,
-                kralikNaVine, zlatyBazantPaal, zlatyBazantMads, zlatyBazantLorents, vinFreddy, vinMarie, vinEdvard,
-                zmzrlinovyPoharDessertSofie, zmzrlinovyPoharDessertFreddy, zmzrlinovyPoharDessertEdvard,
-                makovesulanceDessertMads, makovesulanceDessertPaal, makovesulanceDessertLorents, cokotortaDessert,
-                kaffe, baileys, service);
-        assertThat(kaninMaaltid.getSum(), is(createSum(246, 10)));
-        assertThat(kaninMaaltid.getUtestaaende(mads), is(createSum(34, 957)));
-        assertThat(kaninMaaltid.getUtestaaende(marie), is(createSum(34, 727)));
-        assertThat(kaninMaaltid.getUtestaaende(paal), is(createSum(36, 457)));
-        assertThat(kaninMaaltid.getUtestaaende(lorents), is(createSum(32, 957)));
-        assertThat(kaninMaaltid.getUtestaaende(edvard), is(createSum(44, 217)));
-        assertThat(kaninMaaltid.getUtestaaende(freddy), is(createSum(38, 227)));
-        assertThat(kaninMaaltid.getUtestaaende(sofie), is(createSum(24, 557)));
-        kaninMaaltid.addBetaling(freddy, createSum(40, 0));
-        kaninMaaltid.addBetaling(sofie, createSum(25, 0));
-        kaninMaaltid.addBetaling(edvard, createSum(32, 0));
-        kaninMaaltid.addBetaling(mads, createSum(50, 0));
-        kaninMaaltid.addBetaling(paal, createSum(90, 0));
-        kaninMaaltid.addBetaling(marie, createSum(10, 0));
-        assertThat(kaninMaaltid.getUtestaaende(mads), is(new Sum(-15.043)));
-        assertThat(kaninMaaltid.getUtestaaende(lorents), is(createSum(32, 957)));
-        assertThat(kaninMaaltid.getUtestaaende(sofie), is(createSum(0, -443)));
-        assertThat(kaninMaaltid.getUtestaaende(marie), is(createSum(24, 727)));
-        assertThat(kaninMaaltid.getUtestaaende(edvard), is(createSum(12, 217)));
-        assertThat(kaninMaaltid.getUtestaaende(freddy), is(createSum(-1, 773)));
-        assertThat(kaninMaaltid.getUtestaaende(paal), is(createSum(-53, 543)));
-        return kaninMaaltid;
-    }
-
     Maaltid getLePapillonMaaltid(Deltakar mads, Deltakar marie, Deltakar paal, Deltakar sofie) {
         Rett kasteelBarista = new Rett("Kasteel Barista", createSum(5, 30), mads);
         Rett zlatyBazant = new Rett("Zlaty bazant", createSum(2, 50), sofie);
-        Rett cappucino = new Rett("Cappucino", createSum(2, 90), marie, "");
-        Rett caffeLatte = new Rett("Caffe latte", createSum(2, 90), paal, "");
-        Rett cubaCake1 = new Rett("Cuba cake", createSum(4, 90), paal, "");
-        Rett cubaCake2 = new Rett("Cuba cake", createSum(4, 90), mads, "");
-        Rett brownieCake = new Rett("Brownie cake", createSum(4, 90), marie, "");
-        Rett serviceCharge = new Rett("Service charge", createSum(2, 90), null, "");
+        Rett cappucino = new Rett("Cappucino", createSum(2, 90), marie);
+        Rett caffeLatte = new Rett("Caffe latte", createSum(2, 90), paal);
+        Rett cubaCake1 = new Rett("Cuba cake", createSum(4, 90), paal);
+        Rett cubaCake2 = new Rett("Cuba cake", createSum(4, 90), mads);
+        Rett brownieCake = new Rett("Brownie cake", createSum(4, 90), marie);
+        Rett serviceCharge = new Rett("Service charge", createSum(2, 90), null);
 
         Maaltid maaltid =
                 new Maaltid("Le Papillon", kasteelBarista, zlatyBazant, cappucino, caffeLatte, cubaCake1, cubaCake2, brownieCake, serviceCharge);
@@ -100,15 +41,14 @@ class BratislavaMaaltidFactory {
         return maaltid;
     }
 
-
     Maaltid getTheRedLionMaaltid(Deltakar mads, Deltakar marie, Deltakar paal, Deltakar sofie, Deltakar lorents, Deltakar edvard, Deltakar freddy) {
-        Rett londonPride = new Rett("London Pride", createSum(3, 30), paal, "");
-        Rett luckyBastard = new Rett("Lucky bastard", createSum(3, 50), mads, "");
-        Rett zlatyBazant = new Rett("Zlaty bazant", createSum(3, 20), lorents, "");
-        Rett mojitoMarie = new Rett("Mojito", createSum(5, 90), marie, "");
-        Rett mojitoEdvard = new Rett("Mojito", createSum(5, 90), edvard, "");
-        Rett pinaColada = new Rett("Pina colada", createSum(5, 90), freddy, "");
-        Rett kaltenecker = new Rett("Kaltenecker", createSum(2, 90), sofie, "");
+        Rett londonPride = new Rett("London Pride", createSum(3, 30), paal);
+        Rett luckyBastard = new Rett("Lucky bastard", createSum(3, 50), mads);
+        Rett zlatyBazant = new Rett("Zlaty bazant", createSum(3, 20), lorents);
+        Rett mojitoMarie = new Rett("Mojito", createSum(5, 90), marie);
+        Rett mojitoEdvard = new Rett("Mojito", createSum(5, 90), edvard);
+        Rett pinaColada = new Rett("Pina colada", createSum(5, 90), freddy);
+        Rett kaltenecker = new Rett("Kaltenecker", createSum(2, 90), sofie);
 
         Maaltid redLion = new Maaltid("The Red Lion", londonPride, luckyBastard, zlatyBazant, mojitoMarie, mojitoEdvard, pinaColada, kaltenecker);
         redLion.setBetaler(mads);
@@ -121,6 +61,67 @@ class BratislavaMaaltidFactory {
         assertThat(redLion.getUtestaaende(edvard), is(createSum(5, 90)));
         assertThat(redLion.getUtestaaende(freddy), is(createSum(5, 90)));
         return redLion;
+    }
+
+
+    Maaltid getKaninMaaltid() {
+        Rett bonaqua = new Rett("Bonaqua", createSum(6, 0), null);
+        Rett slivovica = new Rett("Slivovica", createSum(20, 30), null);
+        Rett mangalica = new Rett("Mangalica", createSum(18, 90), mads);
+        Rett diviakPomarancVillsvinFreddy = new Rett("Diviak pomaranc villsvin", createSum(16, 90), freddy);
+        Rett diviakPomarancVillsvinPaal = new Rett("Diviak pomaranc villsvin", createSum(16, 90), paal);
+        Rett diviakPomarancVillsvinLorents = new Rett("Diviak pomaranc villsvin", createSum(16, 90), lorents);
+        Rett jahnacieLytkoKanin = new Rett("Jahnacie lytko kanin", createSum(22, 90), edvard);
+        Rett kuraciSteakKylling = new Rett("Kuraci steak kylling", createSum(10, 90), sofie);
+        Rett kralikNaVine = new Rett("Kralik na vine", createSum(13, 90), marie);
+        Rett zlatyBazantPaal = new Rett("Zlaty bazant", createSum(2, 90), paal);
+        Rett zlatyBazantMads = new Rett("Zlaty bazant", createSum(2, 90), mads);
+        Rett zlatyBazantLorents = new Rett("Zlaty bazant", createSum(2, 90), lorents);
+        Rett vinFreddy = new Rett("Vin", createSum(7, 67), freddy);
+        Rett vinMarie = new Rett("Vin", createSum(7, 67), marie);
+        Rett vinEdvard = new Rett("Vin", createSum(7, 66), edvard);
+
+        Rett zmzrlinovyPoharDessertSofie = new Rett("Zmzrlinovy Pohar dessert", createSum(4, 50), sofie);
+        Rett zmzrlinovyPoharDessertFreddy = new Rett("Zmzrlinovy Pohar dessert", createSum(4, 50), freddy);
+        Rett zmzrlinovyPoharDessertEdvard = new Rett("Zmzrlinovy Pohar dessert", createSum(4, 50), edvard);
+        Rett makovesulanceDessertMads = new Rett("Makovesulance dessert", createSum(4, 0), mads);
+        Rett makovesulanceDessertPaal = new Rett("Makovesulance dessert", createSum(4, 0), paal);
+        Rett makovesulanceDessertLorents = new Rett("Makovesulance dessert", createSum(4, 0), lorents);
+        Rett cokotortaDessert = new Rett("Cokotorta dessert", createSum(4, 0), marie);
+        Rett kaffe = new Rett("Kaffe", createSum(15, 40), null);
+        Rett baileys = new Rett("Baileys", createSum(3, 50), paal);
+        Rett service = new Rett("Service", createSum(22, 40), null);
+        Rett driks = new Rett("Driks", createSum(0, 90), null);
+
+
+        Maaltid kaninMaaltid = new Maaltid("Kanin-måltid", bonaqua, slivovica, mangalica, diviakPomarancVillsvinFreddy,
+                diviakPomarancVillsvinPaal, diviakPomarancVillsvinLorents, jahnacieLytkoKanin, kuraciSteakKylling,
+                kralikNaVine, zlatyBazantPaal, zlatyBazantMads, zlatyBazantLorents, vinFreddy, vinMarie, vinEdvard,
+                zmzrlinovyPoharDessertSofie, zmzrlinovyPoharDessertFreddy, zmzrlinovyPoharDessertEdvard,
+                makovesulanceDessertMads, makovesulanceDessertPaal, makovesulanceDessertLorents, cokotortaDessert,
+                kaffe, baileys, service, driks);
+        assertThat(kaninMaaltid.getSum(), is(createSum(247, 0)));
+        assertThat(kaninMaaltid.getUtestaaende(mads), is(new Sum(35.086)));
+        assertThat(kaninMaaltid.getUtestaaende(marie), is(createSum(34, 856)));
+        assertThat(kaninMaaltid.getUtestaaende(paal), is(createSum(36, 586)));
+        assertThat(kaninMaaltid.getUtestaaende(lorents), is(new Sum(33.086)));
+        assertThat(kaninMaaltid.getUtestaaende(edvard), is(createSum(44, 346)));
+        assertThat(kaninMaaltid.getUtestaaende(freddy), is(createSum(38, 356)));
+        assertThat(kaninMaaltid.getUtestaaende(sofie), is(createSum(24, 686)));
+        kaninMaaltid.addBetaling(freddy, createSum(40, 0));
+        kaninMaaltid.addBetaling(sofie, createSum(25, 0));
+        kaninMaaltid.addBetaling(edvard, createSum(32, 0));
+        kaninMaaltid.addBetaling(mads, createSum(50, 0));
+        kaninMaaltid.addBetaling(paal, createSum(90, 0));
+        kaninMaaltid.addBetaling(marie, createSum(10, 0));
+        assertThat(kaninMaaltid.getUtestaaende(mads), is(new Sum(-14.914)));
+        assertThat(kaninMaaltid.getUtestaaende(lorents), is(new Sum(33.086)));
+        assertThat(kaninMaaltid.getUtestaaende(sofie), is(createSum(0, -314)));
+        assertThat(kaninMaaltid.getUtestaaende(marie), is(createSum(24, 856)));
+        assertThat(kaninMaaltid.getUtestaaende(edvard), is(createSum(12, 346)));
+        assertThat(kaninMaaltid.getUtestaaende(freddy), is(createSum(-1, 644)));
+        assertThat(kaninMaaltid.getUtestaaende(paal), is(createSum(-53, 414)));
+        return kaninMaaltid;
     }
 
     private Maaltid getUcetMaaltid() {
@@ -161,18 +162,18 @@ class BratislavaMaaltidFactory {
     }
 
     Maaltid getUrbanSpaceMaaltid() {
-        Rett tapas1 = new Rett(createSum(12, 90), null, "");
-        Rett tapas2 = new Rett(createSum(12, 90), null, "");
-        Rett karmaKola = new Rett(createSum(3, 50), edvard, "");
-        Rett brewdogDeadPonyClub = new Rett(createSum(3, 90), mads, "");
-        Rett mangoLassi = new Rett(createSum(3, 90), paal, "");
-        Rett golguz = new Rett(createSum(3, 98), marie, "");
-        Rett brewdog5amsaintEdvard = new Rett(createSum(4, 40), edvard, "");
-        Rett brewdog5amsaintFreddy = new Rett(createSum(4, 40), freddy, "");
-        Rett broed = new Rett(createSum(1, 0), null, "");
-        Rett irishCoffee = new Rett(createSum(19, 50), null, "");
+        Rett tapas1 = new Rett("Tapas", createSum(12, 90), null);
+        Rett tapas2 = new Rett("Tapas", createSum(12, 90), null);
+        Rett karmaKola = new Rett("Karma cola", createSum(3, 50), edvard);
+        Rett brewdogDeadPonyClub = new Rett("Brewdog Dead pony club", createSum(3, 90), mads);
+        Rett mangoLassi = new Rett("Mango lassi", createSum(3, 90), paal);
+        Rett golguz = new Rett("Golguz", createSum(3, 98), marie);
+        Rett brewdog5amsaintEdvard = new Rett("Brewdog 5.am saint", createSum(4, 40), edvard);
+        Rett brewdog5amsaintFreddy = new Rett("Brewdog 5.am saint", createSum(4, 40), freddy);
+        Rett broed = new Rett("Brød", createSum(1, 0), null);
+        Rett irishCoffee = new Rett("Irish coffee", createSum(19, 50), null);
 
-        Maaltid urbanSpaceMaaltid = new Maaltid(tapas1, tapas2, karmaKola, brewdogDeadPonyClub,
+        Maaltid urbanSpaceMaaltid = new Maaltid("Urban space", tapas1, tapas2, karmaKola, brewdogDeadPonyClub,
                 mangoLassi, golguz, brewdog5amsaintEdvard, brewdog5amsaintFreddy, broed, irishCoffee);
         urbanSpaceMaaltid.setBetaler(marie);
 
@@ -186,14 +187,14 @@ class BratislavaMaaltidFactory {
     }
 
     Maaltid getUFOMaaltid() {
-        Rett nikkaFreddy = new Rett(createSum(8, 65), freddy, "");
-        Rett nikkaEdvard = new Rett(createSum(8, 65), edvard, "");
-        Rett oelMads = new Rett(createSum(5, 90), mads, "");
-        Rett oelLorents = new Rett(createSum(5, 90), lorents, "");
-        Rett bazant = new Rett(createSum(3, 65), sofie, "");
-        Rett irishCoffee = new Rett(createSum(7, 50), paal, "");
-        Rett kakao = new Rett(createSum(7, 50), marie, "");
-        Maaltid ufoMaaltid = new Maaltid(nikkaFreddy, nikkaEdvard, oelMads, oelLorents, bazant, irishCoffee, kakao);
+        Rett nikkaFreddy = new Rett("Nikka", createSum(8, 65), freddy);
+        Rett nikkaEdvard = new Rett("Nikka", createSum(8, 65), edvard);
+        Rett oelMads = new Rett("Øl", createSum(5, 90), mads);
+        Rett oelLorents = new Rett("Øl", createSum(5, 90), lorents);
+        Rett bazant = new Rett("Bazant", createSum(3, 65), sofie);
+        Rett irishCoffee = new Rett("Irish coffee", createSum(7, 50), paal);
+        Rett kakao = new Rett("Kakao", createSum(7, 50), marie);
+        Maaltid ufoMaaltid = new Maaltid("UFO", nikkaFreddy, nikkaEdvard, oelMads, oelLorents, bazant, irishCoffee, kakao);
         ufoMaaltid.setBetaler(lorents);
 
         assertThat(ufoMaaltid.getUtestaaende(mads), is(createSum(5, 90)));
@@ -209,22 +210,22 @@ class BratislavaMaaltidFactory {
     }
 
     Maaltid getKontaktMaaltid() {
-        Rett fernet = new Rett(createSum(2, 20), mads, "");
-        Rett urpiner1 = new Rett(createSum(1, 50), sofie, "");
-        Rett urpiner2 = new Rett(createSum(1, 50), sofie, "");
-        Rett absinth = new Rett(createSum(3, 60), lorents, "");
-        Rett radler = new Rett(createSum(1, 70), marie, "");
-        Rett kalteneckerChopperMads = new Rett(createSum(2, 80), mads, "");
-        Rett kalteneckerChopperEdvard1 = new Rett(createSum(2, 80), edvard, "");
-        Rett kalteneckerChopperEdvard2 = new Rett(createSum(2, 80), edvard, "");
-        Rett kalteneckerChopperFreddy1 = new Rett(createSum(2, 80), freddy, "");
-        Rett kalteneckerChopperFreddy2 = new Rett(createSum(2, 80), freddy, "");
-        Rett kalteneckerFiestaPaal = new Rett(createSum(2, 60), paal, "");
-        Rett kalteneckerFiestaLorents = new Rett(createSum(2, 60), lorents, "");
-        Rett espresso = new Rett(createSum(2, 80), marie, "");
-        Rett pallMallMads = new Rett(createSum(2, 70), mads, "");
-        Rett pallMallPaal = new Rett(createSum(2, 70), paal, "");
-        Maaltid kontaktMaaltid = new Maaltid(fernet, urpiner1, urpiner2, absinth, radler, kalteneckerChopperMads,
+        Rett fernet = new Rett("Fernet", createSum(2, 20), mads);
+        Rett urpiner1 = new Rett("Urpiner", createSum(1, 50), sofie);
+        Rett urpiner2 = new Rett("Urpiner", createSum(1, 50), sofie);
+        Rett absinth = new Rett("Absinth", createSum(3, 60), lorents);
+        Rett radler = new Rett("Radler", createSum(1, 70), marie);
+        Rett kalteneckerChopperMads = new Rett("Kaltenecker chopper", createSum(2, 80), mads);
+        Rett kalteneckerChopperEdvard1 = new Rett("Kaltenecker chopper", createSum(2, 80), edvard);
+        Rett kalteneckerChopperEdvard2 = new Rett("Kaltenecker chopper", createSum(2, 80), edvard);
+        Rett kalteneckerChopperFreddy1 = new Rett("Kaltenecker chopper", createSum(2, 80), freddy);
+        Rett kalteneckerChopperFreddy2 = new Rett("Kaltenecker chopper", createSum(2, 80), freddy);
+        Rett kalteneckerFiestaPaal = new Rett("Kaltenecker fiesta", createSum(2, 60), paal);
+        Rett kalteneckerFiestaLorents = new Rett("Kaltenecker fiesta", createSum(2, 60), lorents);
+        Rett espresso = new Rett("Espresso", createSum(2, 80), marie);
+        Rett pallMallMads = new Rett("Pall mall", createSum(2, 70), mads);
+        Rett pallMallPaal = new Rett("Pall mall", createSum(2, 70), paal);
+        Maaltid kontaktMaaltid = new Maaltid("Kontakt", fernet, urpiner1, urpiner2, absinth, radler, kalteneckerChopperMads,
                 kalteneckerChopperEdvard1, kalteneckerChopperEdvard2, kalteneckerChopperFreddy1, kalteneckerChopperFreddy2,
                 kalteneckerFiestaPaal, kalteneckerFiestaLorents, espresso, pallMallMads, pallMallPaal);
         kontaktMaaltid.setBetaler(edvard);
