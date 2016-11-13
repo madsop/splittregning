@@ -80,6 +80,7 @@ class BratislavaMaaltidFactory {
         Rett vinFreddy = new Rett("Vin", createSum(7, 67), freddy);
         Rett vinMarie = new Rett("Vin", createSum(7, 67), marie);
         Rett vinEdvard = new Rett("Vin", createSum(7, 66), edvard);
+        //        Rett vin = new Rett("Vin", createSum(23, 0), marie, edvard, freddy);
 
         Rett zmzrlinovyPoharDessertSofie = new Rett("Zmzrlinovy Pohar dessert", createSum(4, 50), sofie);
         Rett zmzrlinovyPoharDessertFreddy = new Rett("Zmzrlinovy Pohar dessert", createSum(4, 50), freddy);
@@ -262,7 +263,24 @@ class BratislavaMaaltidFactory {
     }
 
     Maaltid getILeiligheta() {
-        Maaltid iLeiligheta = new Maaltid("I leiligheta");
+        Rett f = new Rett("Freddy", createSum(6, 0), freddy);
+        Rett e = new Rett("Freddy", createSum(6, 0), edvard);
+        Rett l = new Rett("Lorents", createSum(12, 0), lorents);
+        Rett ms = new Rett("Marie", createSum(1), marie);
+        Rett mo = new Rett("Mads", createSum(1, 0), mads);
+        Rett s = new Rett("Sofie", createSum(6), sofie);
+        Maaltid iLeiligheta = new Maaltid("I leiligheta", f, e, l, ms, mo, s);
+        iLeiligheta.addBetaling(freddy, createSum(12, 0));
+        iLeiligheta.addBetaling(marie, createSum(18, 0));
+        iLeiligheta.addBetaling(mads, createSum(2, 0));
+
+        assertThat(iLeiligheta.getSum(), is(createSum(32, 0)));
+        assertThat(iLeiligheta.getUtestaaende(mads), is(createSum(-1, 0)));
+        assertThat(iLeiligheta.getUtestaaende(marie), is(createSum(-17, 0)));
+        assertThat(iLeiligheta.getUtestaaende(freddy), is(createSum(-6, 0)));
+        assertThat(iLeiligheta.getUtestaaende(lorents), is(createSum(12, 0)));
+        assertThat(iLeiligheta.getUtestaaende(sofie), is(createSum(6, 0)));
+        assertThat(iLeiligheta.getUtestaaende(edvard), is(createSum(6, 0)));
         return iLeiligheta;
     }
 }

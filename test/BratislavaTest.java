@@ -204,9 +204,17 @@ public class BratislavaTest {
         assertThat(tur.getUtestaaende(lorents), is(createSum(16, 707)));
 
         Maaltid iLeiligheta = bratislavaMaaltidFactory.getILeiligheta();
+        tur.addMaaltid(iLeiligheta);
+        assertThat(tur.sumOffset(), is(Sum.empty));
+        assertThat(tur.getUtestaaende(mads), is(createSum(-12, 488)));
+        assertThat(tur.getUtestaaende(marie), is(createSum(1, 172)));
+        assertThat(tur.getUtestaaende(paal), is(createSum(-98, 588)));
+        assertThat(tur.getUtestaaende(sofie), is(createSum(2, 632)));
+        assertThat(tur.getUtestaaende(lorents), is(createSum(28, 707)));
+        assertThat(tur.getUtestaaende(edvard), is(createSum(37, 777)));
+        assertThat(tur.getUtestaaende(freddy), is(createSum(40, 787)));
 
-
-//        printSluttrapport(tur);
+        printSluttrapport(tur);
     }
 
     private void printSluttrapport(Tur tur) {

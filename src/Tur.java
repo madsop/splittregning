@@ -95,7 +95,7 @@ class Tur {
                         .map(x -> "Måltid " +x +": " +x.getRetterFor(deltakar))
                         .collect(Collectors.joining("\n"))
         );
-        stringBuilder.append("\n Pluss delar i fellesrettar \n").append(
+        stringBuilder.append("\n Pluss delar i fellesrettar/rettar eg ikkje har klart å spore tilbake \n").append(
                 maaltider.stream()
                         .filter(maaltid -> !maaltid.deltokIkkePaaDetteMaaltidet(deltakar))
                         .filter(maaltid -> !maaltid.getRetterFelles(deltakar).isEmpty())
