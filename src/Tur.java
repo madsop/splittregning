@@ -64,7 +64,7 @@ class Tur {
         return maaltider.stream()
                 .flatMap(x -> x.getRetter().stream())
                 .filter(rettPredicate)
-                .map(Rett::getBeloep)
+                .map(Rett::getBeloepPerPerson)
                 .reduce(new Sum(0, 0), Sum::pluss);
     }
 
@@ -72,7 +72,7 @@ class Tur {
         return maaltider.stream().map(x -> x.getBetaltFelles(deltakar)).reduce(new Sum(0, 0), Sum::pluss);
     }
 
-    void printRapportFor(Deltakar deltakar) {
+    private void printRapportFor(Deltakar deltakar) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(deltakar).append(" har totalt betalt ").append(getTotaltBetalt(deltakar))
         .append("\n").append(deltakar).append(" har totalt brukt ").append(getTotaltBruktUtenFelles(deltakar))
