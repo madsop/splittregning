@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 class Maaltid {
+    @Getter
+    private String namn;
 
     @Getter
     private List<Rett> retter;
@@ -12,6 +14,22 @@ class Maaltid {
     private Deltakar betaler;
     @Getter
     private Set<Betaling> betalingar;
+
+    Maaltid(String namn, Rett... rettar) {
+        this(rettar);
+        this.namn = namn;
+    }
+
+    Maaltid(Rett... rett) {
+        retter = new ArrayList<>();
+        betalingar = new HashSet<>();
+        Arrays.stream(rett).forEach(retter::add);
+    }
+
+    @Override
+    public String toString() {
+        return namn + " (" + getSum() + ")";
+    }
 
     void addBetaling(Deltakar deltakar, Sum sum) {
         if (betaler != null) {
@@ -26,12 +44,6 @@ class Maaltid {
         betalingar.add(new Betaling(deltakar, getSum()));
     }
 
-    Maaltid(Rett... rett) {
-        retter = new ArrayList<>();
-        betalingar = new HashSet<>();
-        Arrays.stream(rett).forEach(retter::add);
-    }
-
     Sum getUtestaaende(Deltakar deltakar) {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
             return Sum.empty;
@@ -43,7 +55,7 @@ class Maaltid {
 
     }
 
-    private boolean deltokIkkePaaDetteMaaltidet(Deltakar deltakar) {
+    boolean deltokIkkePaaDetteMaaltidet(Deltakar deltakar) {
         return retter.stream().noneMatch(x -> deltakar.equals(x.getDeltakar()));
     }
 
@@ -52,7 +64,7 @@ class Maaltid {
                 .filter(x -> deltakar.equals(x.getDeltakar()))
                 .map(Rett::getBeloep)
                 .reduce(new Sum(0,0), Sum::pluss)
-                .pluss(getSumPerPersonForFellesRett());
+                .pluss(getSumPerPersonForFellesRett(deltakar));
     }
 
     Sum getSum() {
@@ -66,7 +78,10 @@ class Maaltid {
         return retter.stream().map(Rett::getBeloep).reduce(new Sum(0,0), Sum::pluss);
     }
 
-    private Sum getSumPerPersonForFellesRett() {
+    private Sum getSumPerPersonForFellesRett(Deltakar deltakar) {
+        if (deltokIkkePaaDetteMaaltidet(deltakar)) {
+            return Sum.empty;
+        }
         return retter.stream()
                 .filter(x -> x.getDeltakar() == null)
                 .map(Rett::getBeloep)
@@ -99,6 +114,10 @@ class Maaltid {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
             return Sum.empty;
         }
-        return getSumPerPersonForFellesRett();
+        return getSumPerPersonForFellesRett(deltakar);
+    }
+
+    List<Rett> getRetterFor(Deltakar deltakar) {
+        return retter.stream().filter(x -> deltakar.equals(x.getDeltakar())).collect(Collectors.toList());
     }
 }

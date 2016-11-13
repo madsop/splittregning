@@ -75,8 +75,13 @@ public class BratislavaTest {
         assertThat(tur.sumOffset(), is(Sum.empty));
         assertThat(tur.getTotaltBruktUtenFelles(mads), is(new Sum(13, 70)));
         assertThat(tur.getTotaltBruktMedFelles(mads), is(new Sum(14, 425)));
-        assertThat(tur.getTotaltBetaltFelles(mads), is(new Sum(0, 725)));
-        assertThat(tur.getTotaltBetaltFelles(lorents), is(Sum.empty));
+        assertThat(tur.getTotaltBruktFelles(mads), is(new Sum(0, 725)));
+        assertThat(tur.getTotaltBruktFelles(lorents), is(Sum.empty));
+
+        tur.printRapportFor(mads);
+        tur.printRapportFor(lorents);
+        tur.printRapportMedRettarFor(mads);
+        tur.printRapportMedRettarFor(lorents);
     }
 
     private Sum createSum(int heltall, int fraction) {

@@ -57,7 +57,6 @@ class Tur {
     }
 
     Sum getTotaltBruktMedFelles(Deltakar deltakar) {
-        Predicate<Rett> rettPredicate = x -> deltakar.equals(x.getDeltakar()) ||  x.getDeltakar() == null;
         return maaltider.stream().map(x -> x.getBruktFor(deltakar)).reduce(new Sum(0, 0), Sum::pluss);
     }
 
@@ -69,7 +68,33 @@ class Tur {
                 .reduce(new Sum(0, 0), Sum::pluss);
     }
 
-    Sum getTotaltBetaltFelles(Deltakar deltakar) {
+    Sum getTotaltBruktFelles(Deltakar deltakar) {
         return maaltider.stream().map(x -> x.getBetaltFelles(deltakar)).reduce(new Sum(0, 0), Sum::pluss);
+    }
+
+    void printRapportFor(Deltakar deltakar) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(deltakar).append(" har totalt betalt ").append(getTotaltBetalt(deltakar))
+        .append("\n").append(deltakar).append(" har totalt brukt ").append(getTotaltBruktUtenFelles(deltakar))
+        .append(", ").append("pluss andel fellesutgifter på ").append(getTotaltBruktFelles(deltakar))
+        .append(", som gir totale utgifter ").append(getTotaltBruktMedFelles(deltakar))
+        .append(", som gir totalt uteståande for ").append(deltakar).append(" på ").append(getUtestaaende(deltakar));
+        print(stringBuilder);
+    }
+
+    private void print(Object text) {
+        System.out.println(text);
+    }
+
+    void printRapportMedRettarFor(Deltakar deltakar) {
+        printRapportFor(deltakar);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Dette var fordelt på \n").append(
+                maaltider.stream()
+                        .filter(x -> !x.deltokIkkePaaDetteMaaltidet(deltakar))
+                        .map(x -> "Måltid " +x +": " +x.getRetterFor(deltakar))
+                        .collect(Collectors.joining("\n"))
+        );
+        print(stringBuilder);
     }
 }
