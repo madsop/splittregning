@@ -231,6 +231,17 @@ public class BratislavaTest {
         tur.printRapportMedRettarFor(freddy);
         printSkiljeline();
         tur.printRapportMedRettarFor(edvard);
+
+        StringBuilder stringBuilder = new StringBuilder()
+                .append("\nUteståande Mads: ").append(tur.getUtestaaende(mads))
+                .append("\nUteståande Marie: ").append(tur.getUtestaaende(marie))
+                .append("\nUteståande Pål: ").append(tur.getUtestaaende(paal))
+                .append("\nUteståande Sofie: ").append(tur.getUtestaaende(sofie))
+                .append("\nUteståande Lorents: ").append(tur.getUtestaaende(lorents))
+                .append("\nUteståande Freddy: ").append(tur.getUtestaaende(freddy))
+                .append("\nUteståande Edvard: ").append(tur.getUtestaaende(edvard))
+                .append("\n(Alt i euro)");
+        System.out.println(stringBuilder);
     }
 
     private void printSkiljeline() {
