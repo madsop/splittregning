@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/test/BratislavaTest.java" line="103" mnemonic="7" />
     <bookmark url="file://$PROJECT_DIR$/src/Tur.java" line="96" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/src/Rett.java" line="32" mnemonic="7" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c188a1b-b8ad-43b9-821e-b2ac92372dfe" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SplitRegning/Maaltid.class" afterPath="$PROJECT_DIR$/out/production/SplitRegning/Maaltid.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/todo" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SplitRegning/Tur.class" afterPath="$PROJECT_DIR$/out/production/SplitRegning/Tur.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/SplitRegning/BratislavaTest.class" afterPath="$PROJECT_DIR$/out/test/SplitRegning/BratislavaTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/lombok.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lombok.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Maaltid.java" afterPath="$PROJECT_DIR$/src/Maaltid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Rett.java" afterPath="$PROJECT_DIR$/src/Rett.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tur.java" afterPath="$PROJECT_DIR$/src/Tur.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/BratislavaMaaltidFactory.java" afterPath="$PROJECT_DIR$/test/BratislavaMaaltidFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/BratislavaTest.java" afterPath="$PROJECT_DIR$/test/BratislavaTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SplitRegning.iml" afterPath="$PROJECT_DIR$/SplitRegning.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/lombok.jar" afterPath="$PROJECT_DIR$/lib/lombok.jar" />
     </list>
     <ignored path="SplitRegning.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,23 +35,51 @@
       <file leaf-file-name="Tur.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tur.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="99" column="55" lean-forward="true" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="55" />
+            <state relative-caret-position="204">
+              <caret line="74" column="22" lean-forward="false" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1564#1565#0" expanded="true" />
+                <element signature="e#1642#1643#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Rett.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="todo" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/todo">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Deltakar.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Deltakar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Rett.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Rett.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="24" column="56" lean-forward="false" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
+            <state relative-caret-position="377">
+              <caret line="26" column="47" lean-forward="false" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
               <folding>
-                <element signature="e#567#568#0" expanded="true" />
-                <element signature="e#630#631#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#Rett#0;class#Rett#0" expanded="false" />
+                <element signature="e#706#707#0" expanded="true" />
+                <element signature="e#761#762#0" expanded="true" />
+                <element signature="e#983#984#0" expanded="true" />
+                <element signature="e#1035#1036#0" expanded="true" />
+                <element signature="e#1065#1066#0" expanded="true" />
+                <element signature="e#1108#1109#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -63,21 +88,18 @@
       <file leaf-file-name="BratislavaTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/BratislavaTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="177" column="12" lean-forward="false" selection-start-line="177" selection-start-column="12" selection-end-line="177" selection-end-column="12" />
+            <state relative-caret-position="252">
+              <caret line="220" column="17" lean-forward="false" selection-start-line="220" selection-start-column="17" selection-end-line="220" selection-end-column="17" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="method#getUtestaaendeReturnerer0VissIngentingErBetalt#0;class#BratislavaTest#0" expanded="false" />
+                <element signature="e#3309#3310#0" expanded="true" />
+                <element signature="e#3358#3359#0" expanded="true" />
+                <element signature="e#3401#3402#0" expanded="true" />
+                <element signature="e#3438#3439#0" expanded="true" />
+                <element signature="e#11575#11576#0" expanded="true" />
+                <element signature="e#11651#11652#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Deltakar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Deltakar.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -85,12 +107,14 @@
       <file leaf-file-name="BratislavaMaaltidFactory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/BratislavaMaaltidFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="45" column="74" lean-forward="false" selection-start-line="45" selection-start-column="74" selection-end-line="45" selection-end-column="74" />
+            <state relative-caret-position="239">
+              <caret line="246" column="49" lean-forward="false" selection-start-line="246" selection-start-column="49" selection-end-line="246" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#15914#15915#0" expanded="true" />
-                <element signature="e#15963#15964#0" expanded="true" />
+                <element signature="e#10960#10961#0" expanded="true" />
+                <element signature="e#10997#10998#0" expanded="true" />
+                <element signature="e#16310#16311#0" expanded="true" />
+                <element signature="e#16359#16360#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -99,11 +123,13 @@
       <file leaf-file-name="Maaltid.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Maaltid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="91" column="4" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="4" />
+            <state relative-caret-position="169">
+              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding>
-                <element signature="e#2772#2773#0" expanded="true" />
-                <element signature="e#2818#2819#0" expanded="true" />
+                <element signature="e#1875#1876#0" expanded="true" />
+                <element signature="e#1967#1968#0" expanded="true" />
+                <element signature="e#2379#2380#0" expanded="true" />
+                <element signature="e#2425#2426#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -149,12 +175,19 @@
       <find>utestaa</find>
       <find>createsum</find>
       <find>tur</find>
-      <find>tur</find>
       <find>deltok</find>
       <find>getNamn()</find>
       <find>redli</find>
       <find>tostring</find>
       <find>Sum</find>
+      <find>printt</find>
+      <find>getbeo</find>
+      <find>vin</find>
+      <find>prin</find>
+      <find>prints</find>
+      <find>print</find>
+      <find>offset</find>
+      <find>printsl</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;&quot;</replace>
@@ -182,12 +215,13 @@
         <option value="$PROJECT_DIR$/test/Slang.java" />
         <option value="$PROJECT_DIR$/test/MaaltidTest.java" />
         <option value="$PROJECT_DIR$/src/AbstractSum.java" />
+        <option value="$PROJECT_DIR$/src/Sum.java" />
+        <option value="$PROJECT_DIR$/src/Maaltid.java" />
+        <option value="$PROJECT_DIR$/src/Rett.java" />
         <option value="$PROJECT_DIR$/test/BratislavaMaaltidFactory.java" />
         <option value="$PROJECT_DIR$/test/BratislavaTest.java" />
-        <option value="$PROJECT_DIR$/src/Maaltid.java" />
-        <option value="$PROJECT_DIR$/src/Sum.java" />
         <option value="$PROJECT_DIR$/src/Tur.java" />
-        <option value="$PROJECT_DIR$/src/Rett.java" />
+        <option value="$PROJECT_DIR$/src/todo" />
       </list>
     </option>
   </component>
@@ -213,9 +247,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -268,10 +299,13 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/lombok.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/lombok.jar!/" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -285,6 +319,10 @@
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="J:\Dropbox\Programmering\Intellij\SplitRegning" />
+      <recent name="J:\Dropbox\Programmering\Intellij\SplitRegning\lib" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -616,38 +654,80 @@
       <option name="project" value="LOCAL" />
       <updated>1479061880161</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Finare utskrift">
+      <created>1479063776045</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1479063776045</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Eit ekstra måltid, pluss starta logikken for å kunne dele rettar">
+      <created>1479068317360</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1479068317360</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Støtte for å kunne dele ein rett">
+      <created>1479069036780</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1479069036780</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fullført rekningsføringa">
+      <created>1479070196854</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1479070196854</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Skriv ut totalt uteståande til slutt">
+      <created>1479070382857</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1479070382857</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Rettar print på sum">
+      <created>1479070600068</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1479070600068</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 19h 52m 49s.xml">
+    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 21h 48m 23s.xml">
       <configuration name="BratislavaTest.getUtestaaendeForHeleTuren" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 19h 55m 53s.xml">
+    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 21h 48m 37s.xml">
       <configuration name="BratislavaTest.getUtestaaendeForHeleTuren" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 19h 56m 06s.xml">
+    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 21h 48m 48s.xml">
       <configuration name="BratislavaTest.getUtestaaendeForHeleTuren" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 19h 56m 51s.xml">
+    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 21h 49m 00s.xml">
       <configuration name="BratislavaTest.getUtestaaendeForHeleTuren" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 19h 58m 34s.xml">
+    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 21h 49m 06s.xml">
       <configuration name="BratislavaTest.getUtestaaendeForHeleTuren" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 19h 58m 45s.xml">
+    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 21h 49m 32s.xml">
       <configuration name="BratislavaTest.getUtestaaendeForHeleTuren" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 19h 59m 11s.xml">
+    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 21h 52m 02s.xml">
       <configuration name="BratislavaTest.getUtestaaendeForHeleTuren" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 19h 59m 37s.xml">
+    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 21h 52m 21s.xml">
       <configuration name="BratislavaTest.getUtestaaendeForHeleTuren" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 20h 00m 48s.xml">
+    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 21h 52m 45s.xml">
       <configuration name="BratislavaTest.getUtestaaendeForHeleTuren" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 20h 02m 28s.xml">
+    <history-entry file="BratislavaTest_getUtestaaendeForHeleTuren - 2016.11.13 at 21h 56m 11s.xml">
       <configuration name="BratislavaTest.getUtestaaendeForHeleTuren" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -670,18 +750,18 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.569857" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28272828" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47634763" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16354166" sideWeight="0.47642276" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16353187" sideWeight="0.47642276" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973877" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3278328" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973877" sideWeight="0.47479674" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973877" sideWeight="0.47479674" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24895833" sideWeight="0.5252032" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44017562" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47084707" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -723,11 +803,18 @@
     <MESSAGE value="Lett reformatering og refaktorisering" />
     <MESSAGE value="Refaktorisering pluss totalt betalt og totalt brukt" />
     <MESSAGE value="Tar høgde for namn på rett og måltid" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tar høgde for namn på rett og måltid" />
+    <MESSAGE value="Finare utskrift" />
+    <MESSAGE value="Eit ekstra måltid, pluss starta logikken for å kunne dele måltid" />
+    <MESSAGE value="Eit ekstra måltid, pluss starta logikken for å kunne dele rettar" />
+    <MESSAGE value="Støtte for å kunne dele ein rett" />
+    <MESSAGE value="Fullført rekningsføringa" />
+    <MESSAGE value="Skriv ut totalt uteståande til slutt" />
+    <MESSAGE value="Rettar print på sum" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rettar print på sum" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="59" />
+      <option name="time" value="61" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -736,34 +823,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Sum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#141#142#0" expanded="true" />
-            <element signature="e#175#176#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/SumTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="24" column="56" lean-forward="false" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
-          <folding>
-            <element signature="e#1221#1222#0" expanded="false" />
-            <element signature="e#1274#1275#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tur.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1564#1565#0" expanded="true" />
+            <element signature="e#1642#1643#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -773,7 +840,14 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#getUtestaaendeReturnerer0VissIngentingErBetalt#0;class#BratislavaTest#0" expanded="false" />
+            <element signature="e#3309#3310#0" expanded="true" />
+            <element signature="e#3358#3359#0" expanded="true" />
+            <element signature="e#3401#3402#0" expanded="true" />
+            <element signature="e#3438#3439#0" expanded="true" />
+            <element signature="e#11575#11576#0" expanded="true" />
+            <element signature="e#11651#11652#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -784,8 +858,10 @@
         <state relative-caret-position="810">
           <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding>
-            <element signature="e#2772#2773#0" expanded="true" />
-            <element signature="e#2818#2819#0" expanded="true" />
+            <element signature="e#1875#1876#0" expanded="true" />
+            <element signature="e#1967#1968#0" expanded="true" />
+            <element signature="e#2379#2380#0" expanded="true" />
+            <element signature="e#2425#2426#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -827,6 +903,8 @@
           <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1564#1565#0" expanded="true" />
+            <element signature="e#1642#1643#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -843,7 +921,14 @@
         <state relative-caret-position="540">
           <caret line="40" column="32" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#getUtestaaendeReturnerer0VissIngentingErBetalt#0;class#BratislavaTest#0" expanded="false" />
+            <element signature="e#3309#3310#0" expanded="true" />
+            <element signature="e#3358#3359#0" expanded="true" />
+            <element signature="e#3401#3402#0" expanded="true" />
+            <element signature="e#3438#3439#0" expanded="true" />
+            <element signature="e#11575#11576#0" expanded="true" />
+            <element signature="e#11651#11652#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -878,8 +963,10 @@
         <state relative-caret-position="270">
           <caret line="22" column="58" lean-forward="false" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
           <folding>
-            <element signature="e#2772#2773#0" expanded="true" />
-            <element signature="e#2818#2819#0" expanded="true" />
+            <element signature="e#1875#1876#0" expanded="true" />
+            <element signature="e#1967#1968#0" expanded="true" />
+            <element signature="e#2379#2380#0" expanded="true" />
+            <element signature="e#2425#2426#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1046,35 +1133,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Deltakar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/BratislavaTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="177" column="12" lean-forward="false" selection-start-line="177" selection-start-column="12" selection-end-line="177" selection-end-column="12" />
-          <folding>
-            <element signature="method#getUtestaaendeReturnerer0VissIngentingErBetalt#0;class#BratislavaTest#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Maaltid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="91" column="4" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="4" />
-          <folding>
-            <element signature="e#2772#2773#0" expanded="true" />
-            <element signature="e#2818#2819#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -1086,36 +1144,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tur.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_05/src.zip!/java/util/Arrays.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="99" column="55" lean-forward="true" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="55" />
+        <state relative-caret-position="136">
+          <caret line="4974" column="0" lean-forward="false" selection-start-line="4974" selection-start-column="0" selection-end-line="4974" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Rett.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="26" column="47" lean-forward="false" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#Rett#0;class#Rett#0" expanded="false" />
+            <element signature="e#706#707#0" expanded="true" />
+            <element signature="e#761#762#0" expanded="true" />
+            <element signature="e#983#984#0" expanded="true" />
+            <element signature="e#1035#1036#0" expanded="true" />
+            <element signature="e#1065#1066#0" expanded="true" />
+            <element signature="e#1108#1109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Maaltid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="e#1875#1876#0" expanded="true" />
+            <element signature="e#1967#1968#0" expanded="true" />
+            <element signature="e#2379#2380#0" expanded="true" />
+            <element signature="e#2425#2426#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/BratislavaMaaltidFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="45" column="74" lean-forward="false" selection-start-line="45" selection-start-column="74" selection-end-line="45" selection-end-column="74" />
+        <state relative-caret-position="239">
+          <caret line="246" column="49" lean-forward="false" selection-start-line="246" selection-start-column="49" selection-end-line="246" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#15914#15915#0" expanded="true" />
-            <element signature="e#15963#15964#0" expanded="true" />
+            <element signature="e#10960#10961#0" expanded="true" />
+            <element signature="e#10997#10998#0" expanded="true" />
+            <element signature="e#16310#16311#0" expanded="true" />
+            <element signature="e#16359#16360#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Rett.java">
+    <entry file="file://$PROJECT_DIR$/test/BratislavaTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="24" column="56" lean-forward="false" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
+        <state relative-caret-position="252">
+          <caret line="220" column="17" lean-forward="false" selection-start-line="220" selection-start-column="17" selection-end-line="220" selection-end-column="17" />
           <folding>
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#630#631#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#getUtestaaendeReturnerer0VissIngentingErBetalt#0;class#BratislavaTest#0" expanded="false" />
+            <element signature="e#3309#3310#0" expanded="true" />
+            <element signature="e#3358#3359#0" expanded="true" />
+            <element signature="e#3401#3402#0" expanded="true" />
+            <element signature="e#3438#3439#0" expanded="true" />
+            <element signature="e#11575#11576#0" expanded="true" />
+            <element signature="e#11651#11652#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="74" column="22" lean-forward="false" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1564#1565#0" expanded="true" />
+            <element signature="e#1642#1643#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Deltakar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1196,7 +1318,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>io.javaslang:javaslang:2.0.4</last-edited>
+          <last-edited>lombok</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
