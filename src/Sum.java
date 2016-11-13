@@ -52,6 +52,6 @@ class Sum {
 
     @Override
     public String toString() {
-        return String.format("%.2f", verdi);
+        return String.format("%.3f", verdi);
     }
 }

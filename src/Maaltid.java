@@ -56,25 +56,18 @@ class Maaltid {
     }
 
     boolean deltokIkkePaaDetteMaaltidet(Deltakar deltakar) {
-        return retter.stream().noneMatch(x -> deltakar.equals(x.getDeltakar()));
+        return retter.stream().noneMatch(x -> x.harDeltakar(deltakar));
     }
 
     Sum getBruktFor(Deltakar deltakar) {
         return retter.stream()
-                .filter(x -> deltakar.equals(x.getDeltakar()))
+                .filter(x -> x.harDeltakar(deltakar))
                 .map(Rett::getBeloep)
                 .reduce(new Sum(0,0), Sum::pluss)
                 .pluss(getSumPerPersonForFellesRett(deltakar));
     }
 
     Sum getSum() {
-        Set<Deltakar> deltakarSet = retter.stream().map(Rett::getDeltakar)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toSet());
-    //    Sum reduce = deltakarSet.stream().map(this::getUtestaaende).reduce(new Sum(0, 0), Sum::pluss);
-      //  if (!reduce.equals(Sum.empty)) {
-       //TODO fiks     System.out.println(reduce);
-        //}
         return retter.stream().map(Rett::getBeloep).reduce(new Sum(0,0), Sum::pluss);
     }
 
@@ -83,7 +76,7 @@ class Maaltid {
             return Sum.empty;
         }
         return retter.stream()
-                .filter(x -> x.getDeltakar() == null)
+                .filter(Rett::isFellesRett)
                 .map(Rett::getBeloep)
                 .reduce(new Sum(0, 0), Sum::pluss)
                 .delPaa(getAntallDeltakarar());
@@ -94,7 +87,7 @@ class Maaltid {
     }
 
     private Stream<Deltakar> getDeltakarar() {
-        return retter.stream().map(Rett::getDeltakar).filter(Objects::nonNull).distinct();
+        return retter.stream().flatMap(rett -> rett.getDeltakarar().stream()).filter(Objects::nonNull).distinct();
     }
 
     void print() {
@@ -118,13 +111,13 @@ class Maaltid {
     }
 
     List<Rett> getRetterFor(Deltakar deltakar) {
-        return retter.stream().filter(x -> deltakar.equals(x.getDeltakar())).collect(Collectors.toList());
+        return retter.stream().filter(x -> x.harDeltakar(deltakar)).collect(Collectors.toList());
     }
 
     List<Rett> getRetterFelles(Deltakar deltakar) {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
             return Collections.emptyList();
         }
-        return retter.stream().filter(x -> x.getDeltakar() == null).collect(Collectors.toList());
+        return retter.stream().filter(Rett::isFellesRett).collect(Collectors.toList());
     }
 }

@@ -53,7 +53,7 @@ class Tur {
     }
 
     Sum getTotaltBruktUtenFelles(Deltakar deltakar) {
-        return getTotaltBruktGivenFilter(x -> deltakar.equals(x.getDeltakar()));
+        return getTotaltBruktGivenFilter(x -> x.harDeltakar(deltakar));
     }
 
     Sum getTotaltBruktMedFelles(Deltakar deltakar) {

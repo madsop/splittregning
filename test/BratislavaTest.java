@@ -86,6 +86,10 @@ public class BratislavaTest {
         return new Sum(heltall, fraction);
     }
 
+    private Sum createSum(double verdi) {
+        return new Sum(verdi);
+    }
+
     @Test
     public void getUtestaaendeForHeleTuren() {
         Tur tur = new Tur();
@@ -168,13 +172,46 @@ public class BratislavaTest {
         assertThat(tur.getUtestaaende(edvard), is(createSum(11, 756)));
         assertThat(tur.getUtestaaende(freddy), is(new Sum(32.166)));
         assertThat(tur.getUtestaaende(sofie), is(createSum(12, 461)));
-        assertThat(tur.sumOffset(), is(Sum.empty)); // Her betalte vi 90 cent ekstra, som ikkje er fjerna frå innskot
+        assertThat(tur.getSum(), is(new Sum(464, 83)));
+        assertThat(tur.sumOffset(), is(Sum.empty));
 
         assertThat(tur.getTotaltBetalt(mads), is(new Sum(111, 80)));
         assertThat(tur.getTotaltBetalt(marie), is(new Sum(80, 38)));
 
-        // Maaltid ucetMaaltid = getUcetMaaltid(); TODO
+        Maaltid ucetMaaltid = bratislavaMaaltidFactory.getUdetMaaltid();
+        tur.addMaaltid(ucetMaaltid);
+        assertThat(tur.sumOffset(), is(Sum.empty));
+        assertThat(tur.getUtestaaende(mads), is(createSum(-23, 988)));
+        assertThat(tur.getUtestaaende(marie), is(createSum(5, 672)));
+        assertThat(tur.getUtestaaende(paal), is(createSum(-101.088)));
+        assertThat(tur.getUtestaaende(sofie), is(createSum(24, 132)));
+        assertThat(tur.getUtestaaende(edvard), is(createSum(31, 777)));
+        assertThat(tur.getUtestaaende(freddy), is(createSum(46, 787)));
+        assertThat(tur.getUtestaaende(lorents), is(createSum(16, 707)));
         // ucetMaaltid.print();
+        assertThat(tur.getSum(), is(new Sum(561, 83)));
+
+        Maaltid urbanBistroMaaltid = bratislavaMaaltidFactory.getUrbanBistroMaaltid();
+        printSluttrapport(tur);
+    }
+
+    private void printSluttrapport(Tur tur) {
         tur.printRapportMedRettarFor(mads);
+        printSkiljeline();
+        tur.printRapportMedRettarFor(marie);
+        printSkiljeline();
+        tur.printRapportMedRettarFor(paal);
+        printSkiljeline();
+        tur.printRapportMedRettarFor(sofie);
+        printSkiljeline();
+        tur.printRapportMedRettarFor(lorents);
+        printSkiljeline();
+        tur.printRapportMedRettarFor(freddy);
+        printSkiljeline();
+        tur.printRapportMedRettarFor(edvard);
+    }
+
+    private void printSkiljeline() {
+        System.out.println("--------------------------------------");
     }
 }
