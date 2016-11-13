@@ -23,6 +23,10 @@ class Rett {
         Arrays.stream(deltakarar).filter(Objects::nonNull).forEach(this.deltakarar::add);
     }
 
+    Sum getBeloepPerPerson() {
+        return beloep.delPaa(deltakarar.size());
+    }
+
     @Override
     public String toString() {
         return namn + "(" + deltakarar.stream().map(Object::toString).collect(Collectors.joining(", ")) +", " +beloep +")";

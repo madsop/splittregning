@@ -247,9 +247,22 @@ class BratislavaMaaltidFactory {
         return new Sum(heltall, fraction);
     }
 
-    public Maaltid getUrbanBistroMaaltid() {
-//        Rett alt = new Rett("Alt saman", createSum(50, 0), mads, marie, paal, sofie);
-        Maaltid urbanBistroMaaltid = new Maaltid("Urban bistro");
+    Maaltid getUrbanBistroMaaltid() {
+        Rett alt = new Rett("Alt saman", createSum(50, 0), mads, marie, paal, sofie);
+        Maaltid urbanBistroMaaltid = new Maaltid("Urban bistro", alt);
+        urbanBistroMaaltid.addBetaling(paal, createSum(10, 0));
+        urbanBistroMaaltid.addBetaling(sofie, createSum(40, 0));
+
+        assertThat(urbanBistroMaaltid.getSum(), is(new Sum(50, 0)));
+        assertThat(urbanBistroMaaltid.getUtestaaende(mads), is(createSum(12, 50)));
+        assertThat(urbanBistroMaaltid.getUtestaaende(marie), is(createSum(12, 50)));
+        assertThat(urbanBistroMaaltid.getUtestaaende(paal), is(createSum(2, 50)));
+        assertThat(urbanBistroMaaltid.getUtestaaende(sofie), is(createSum(-27, 50)));
         return urbanBistroMaaltid;
+    }
+
+    Maaltid getILeiligheta() {
+        Maaltid iLeiligheta = new Maaltid("I leiligheta");
+        return iLeiligheta;
     }
 }

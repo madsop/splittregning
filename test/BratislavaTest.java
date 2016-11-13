@@ -192,7 +192,21 @@ public class BratislavaTest {
         assertThat(tur.getSum(), is(new Sum(561, 83)));
 
         Maaltid urbanBistroMaaltid = bratislavaMaaltidFactory.getUrbanBistroMaaltid();
-        printSluttrapport(tur);
+        tur.addMaaltid(urbanBistroMaaltid);
+        assertThat(tur.sumOffset(), is(Sum.empty));
+        assertThat(tur.getSum(), is(new Sum(611, 83)));
+        assertThat(tur.getUtestaaende(mads), is(createSum(-11, 488)));
+        assertThat(tur.getUtestaaende(marie), is(createSum(18, 172)));
+        assertThat(tur.getUtestaaende(paal), is(createSum(-98.588)));
+        assertThat(tur.getUtestaaende(sofie), is(createSum(-3, 368)));
+        assertThat(tur.getUtestaaende(edvard), is(createSum(31, 777)));
+        assertThat(tur.getUtestaaende(freddy), is(createSum(46, 787)));
+        assertThat(tur.getUtestaaende(lorents), is(createSum(16, 707)));
+
+        Maaltid iLeiligheta = bratislavaMaaltidFactory.getILeiligheta();
+
+
+//        printSluttrapport(tur);
     }
 
     private void printSluttrapport(Tur tur) {

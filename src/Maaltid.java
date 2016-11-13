@@ -62,7 +62,7 @@ class Maaltid {
     Sum getBruktFor(Deltakar deltakar) {
         return retter.stream()
                 .filter(x -> x.harDeltakar(deltakar))
-                .map(Rett::getBeloep)
+                .map(Rett::getBeloepPerPerson)
                 .reduce(new Sum(0,0), Sum::pluss)
                 .pluss(getSumPerPersonForFellesRett(deltakar));
     }
