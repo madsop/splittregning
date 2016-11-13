@@ -28,11 +28,6 @@ public class BratislavaTest {
         bratislavaMaaltidFactory = new BratislavaMaaltidFactory(mads, marie, paal, sofie, lorents, edvard, freddy);
     }
 
-    public void getUtestaaendeReturnerer0VissIngentingErBetalt() {
-        Tur tur = new Tur();
-        assertThat(tur.getUtestaaende(new Deltakar("Mads")), is(Sum.empty));
-    }
-
     @Test
     public void getUtestaaendeFor3120Maaltid() {
         Tur tur = new Tur();
@@ -41,12 +36,12 @@ public class BratislavaTest {
         Maaltid lePapillonMaaltid = bratislavaMaaltidFactory.getLePapillonMaaltid(mads, marie, paal, sofie);
         tur.addMaaltid(lePapillonMaaltid);
 
-        assertThat(tur.getUtestaaende(mads), is(createSum(-20, 275)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(8, 525)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(8, 525)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(3, 225)));
-        assertThat(tur.getSum(), is(createSum(31, 20)));
-        assertThat(tur.sumOffset(), is(Sum.empty));
+        assertThat(tur.getUtestaaende(mads), is(createEuro(-20, 275)));
+        assertThat(tur.getUtestaaende(marie), is(createEuro(8, 525)));
+        assertThat(tur.getUtestaaende(paal), is(createEuro(8, 525)));
+        assertThat(tur.getUtestaaende(sofie), is(createEuro(3, 225)));
+        assertThat(tur.getSum(), is(createEuro(31, 20)));
+        assertThat(tur.sumOffset(), is(Euro.empty));
     }
 
     @Test
@@ -57,8 +52,8 @@ public class BratislavaTest {
         Maaltid redLionMaaltid = bratislavaMaaltidFactory.getTheRedLionMaaltid(mads, marie, paal, sofie, lorents, edvard, freddy);
         tur.addMaaltid(redLionMaaltid);
 
-        assertThat(tur.getSum(), is(createSum(30, 60)));
-        assertThat(tur.sumOffset(), is(Sum.empty));
+        assertThat(tur.getSum(), is(createEuro(30, 60)));
+        assertThat(tur.sumOffset(), is(Euro.empty));
     }
 
     @Test
@@ -71,23 +66,23 @@ public class BratislavaTest {
         Maaltid lePapillonMaaltid = bratislavaMaaltidFactory.getLePapillonMaaltid(mads, marie, paal, sofie);
         tur.addMaaltid(lePapillonMaaltid);
 
-        assertThat(tur.getSum(), is(createSum(61, 80)));
-        assertThat(tur.sumOffset(), is(Sum.empty));
-        assertThat(tur.getTotaltBruktUtenFelles(mads), is(new Sum(13, 70)));
-        assertThat(tur.getTotaltBruktMedFelles(mads), is(new Sum(14, 425)));
-        assertThat(tur.getTotaltBruktFelles(mads), is(new Sum(0, 725)));
-        assertThat(tur.getTotaltBruktFelles(lorents), is(Sum.empty));
+        assertThat(tur.getSum(), is(createEuro(61, 80)));
+        assertThat(tur.sumOffset(), is(Euro.empty));
+        assertThat(tur.getTotaltBruktUtenFelles(mads), is(new Euro(13, 70)));
+        assertThat(tur.getTotaltBruktMedFelles(mads), is(new Euro(14, 425)));
+        assertThat(tur.getTotaltBruktFelles(mads), is(new Euro(0, 725)));
+        assertThat(tur.getTotaltBruktFelles(lorents), is(Euro.empty));
 
         tur.printRapportMedRettarFor(mads);
         tur.printRapportMedRettarFor(lorents);
     }
 
-    private Sum createSum(int heltall, int fraction) {
-        return new Sum(heltall, fraction);
+    private Euro createEuro(int heltall, int fraction) {
+        return new Euro(heltall, fraction);
     }
 
-    private Sum createSum(double verdi) {
-        return new Sum(verdi);
+    private Euro createEuro(double verdi) {
+        return new Euro(verdi);
     }
 
     @Test
@@ -98,121 +93,126 @@ public class BratislavaTest {
         Maaltid lePapillonMaaltid = bratislavaMaaltidFactory.getLePapillonMaaltid(mads, marie, paal, sofie);
         tur.addMaaltid(lePapillonMaaltid);
 
-        assertThat(tur.getUtestaaende(mads), is(createSum(-20, 275)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(8, 525)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(8, 525)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(3, 225)));
-        assertThat(tur.getSum(), is(createSum(31, 20)));
+        assertThat(tur.getUtestaaende(mads), is(createEuro(-20, 275)));
+        assertThat(tur.getUtestaaende(marie), is(createEuro(8, 525)));
+        assertThat(tur.getUtestaaende(paal), is(createEuro(8, 525)));
+        assertThat(tur.getUtestaaende(sofie), is(createEuro(3, 225)));
+        assertThat(tur.getSum(), is(createEuro(31, 20)));
 
 
-        assertThat(tur.sumOffset(), is(Sum.empty));
+        assertThat(tur.sumOffset(), is(Euro.empty));
 //        lePapillonMaaltid.print();
 
         Maaltid redLion = bratislavaMaaltidFactory.getTheRedLionMaaltid(mads, marie, paal, sofie, lorents, edvard, freddy);
         tur.addMaaltid(redLion);
 
-        assertThat(tur.getUtestaaende(mads), is(createSum(-47, 375)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(11, 825)));
-        assertThat(tur.getUtestaaende(lorents), is(createSum(3, 20)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(14, 425)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(6, 125)));
-        assertThat(tur.getUtestaaende(edvard), is(createSum(5, 90)));
-        assertThat(tur.getUtestaaende(freddy), is(createSum(5, 90)));
+        assertThat(tur.getUtestaaende(mads), is(createEuro(-47, 375)));
+        assertThat(tur.getUtestaaende(paal), is(createEuro(11, 825)));
+        assertThat(tur.getUtestaaende(lorents), is(createEuro(3, 20)));
+        assertThat(tur.getUtestaaende(marie), is(createEuro(14, 425)));
+        assertThat(tur.getUtestaaende(sofie), is(createEuro(6, 125)));
+        assertThat(tur.getUtestaaende(edvard), is(createEuro(5, 90)));
+        assertThat(tur.getUtestaaende(freddy), is(createEuro(5, 90)));
 //        redLion.print();
 
-        assertThat(tur.getSum(), is(createSum(61, 80)));
-        assertThat(tur.sumOffset(), is(Sum.empty));
+        assertThat(tur.getSum(), is(createEuro(61, 80)));
+        assertThat(tur.sumOffset(), is(Euro.empty));
 
         Maaltid kontaktMaaltid = bratislavaMaaltidFactory.getKontaktMaaltid();
         tur.addMaaltid(kontaktMaaltid);
 
-        assertThat(tur.getUtestaaende(mads), is(createSum(-39, 675)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(17, 125)));
-        assertThat(tur.getUtestaaende(lorents), is(createSum(9, 40)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(18, 925)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(9, 125)));
-        assertThat(tur.getUtestaaende(edvard), is(createSum(-26, 40)));
-        assertThat(tur.getUtestaaende(freddy), is(createSum(11, 50)));
-        assertThat(tur.getSum(), is(createSum(99, 70)));
-        assertThat(tur.sumOffset(), is(Sum.empty));
+        assertThat(tur.getUtestaaende(mads), is(createEuro(-39, 675)));
+        assertThat(tur.getUtestaaende(paal), is(createEuro(17, 125)));
+        assertThat(tur.getUtestaaende(lorents), is(createEuro(9, 40)));
+        assertThat(tur.getUtestaaende(marie), is(createEuro(18, 925)));
+        assertThat(tur.getUtestaaende(sofie), is(createEuro(9, 125)));
+        assertThat(tur.getUtestaaende(edvard), is(createEuro(-26, 40)));
+        assertThat(tur.getUtestaaende(freddy), is(createEuro(11, 50)));
+        assertThat(tur.getSum(), is(createEuro(99, 70)));
+        assertThat(tur.sumOffset(), is(Euro.empty));
 
         Maaltid ufoMaaltid = bratislavaMaaltidFactory.getUFOMaaltid();
    //     ufoMaaltid.print();
         tur.addMaaltid(ufoMaaltid);
-        assertThat(tur.getUtestaaende(mads), is(createSum(-33, 775)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(24, 625)));
-        assertThat(tur.getUtestaaende(lorents), is(createSum(-32, 45)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(26, 425)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(12, 775)));
-        assertThat(tur.getUtestaaende(edvard), is(createSum(-17, 75)));
-        assertThat(tur.getUtestaaende(freddy), is(createSum(20, 15)));
-        assertThat(tur.getSum(), is(createSum(147, 45)));
-        assertThat(tur.sumOffset(), is(Sum.empty));
+        assertThat(tur.getUtestaaende(mads), is(createEuro(-33, 775)));
+        assertThat(tur.getUtestaaende(paal), is(createEuro(24, 625)));
+        assertThat(tur.getUtestaaende(lorents), is(createEuro(-32, 45)));
+        assertThat(tur.getUtestaaende(marie), is(createEuro(26, 425)));
+        assertThat(tur.getUtestaaende(sofie), is(createEuro(12, 775)));
+        assertThat(tur.getUtestaaende(edvard), is(createEuro(-17, 75)));
+        assertThat(tur.getUtestaaende(freddy), is(createEuro(20, 15)));
+        assertThat(tur.getSum(), is(createEuro(147, 45)));
+        assertThat(tur.sumOffset(), is(Euro.empty));
 
         Maaltid urbanSpaceMaaltid = bratislavaMaaltidFactory.getUrbanSpaceMaaltid();
        // urbanSpaceMaaltid.print();
         tur.addMaaltid(urbanSpaceMaaltid);
-        assertThat(tur.getUtestaaende(mads), is(createSum(-20, 615)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(37, 785)));
-        assertThat(tur.getUtestaaende(lorents), is(createSum(-32, 45)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(-30, 715)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(12, 775)));
-        assertThat(tur.getUtestaaende(edvard), is(createSum(0, -59)));
-        assertThat(tur.getUtestaaende(freddy), is(createSum(33, 81)));
-        assertThat(tur.getSum(), is(createSum(217, 83)));
-        assertThat(tur.sumOffset(), is(Sum.empty));
+        assertThat(tur.getUtestaaende(mads), is(createEuro(-20, 615)));
+        assertThat(tur.getUtestaaende(paal), is(createEuro(37, 785)));
+        assertThat(tur.getUtestaaende(lorents), is(createEuro(-32, 45)));
+        assertThat(tur.getUtestaaende(marie), is(createEuro(-30, 715)));
+        assertThat(tur.getUtestaaende(sofie), is(createEuro(12, 775)));
+        assertThat(tur.getUtestaaende(edvard), is(createEuro(0, -59)));
+        assertThat(tur.getUtestaaende(freddy), is(createEuro(33, 81)));
+        assertThat(tur.getSum(), is(createEuro(217, 83)));
+        assertThat(tur.sumOffset(), is(Euro.empty));
 
         Maaltid kanin = bratislavaMaaltidFactory.getKaninMaaltid();
 //        kanin.print();
         tur.addMaaltid(kanin);
-        assertThat(tur.getUtestaaende(mads), is(createSum(-35, 529)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(-5, 859)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(-15, 629)));
-        assertThat(tur.getUtestaaende(lorents), is(createSum(0, 636)));
-        assertThat(tur.getUtestaaende(edvard), is(createSum(11, 756)));
-        assertThat(tur.getUtestaaende(freddy), is(new Sum(32.166)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(12, 461)));
-        assertThat(tur.getSum(), is(new Sum(464, 83)));
-        assertThat(tur.sumOffset(), is(Sum.empty));
+        assertThat(tur.getUtestaaende(mads), is(createEuro(-35, 529)));
+        assertThat(tur.getUtestaaende(marie), is(createEuro(-5, 859)));
+        assertThat(tur.getUtestaaende(paal), is(createEuro(-15, 629)));
+        assertThat(tur.getUtestaaende(lorents), is(createEuro(0, 636)));
+        assertThat(tur.getUtestaaende(edvard), is(createEuro(11, 756)));
+        assertThat(tur.getUtestaaende(freddy), is(new Euro(32.166)));
+        assertThat(tur.getUtestaaende(sofie), is(createEuro(12, 461)));
+        assertThat(tur.getSum(), is(new Euro(464, 83)));
+        assertThat(tur.sumOffset(), is(Euro.empty));
 
-        assertThat(tur.getTotaltBetalt(mads), is(new Sum(111, 80)));
-        assertThat(tur.getTotaltBetalt(marie), is(new Sum(80, 38)));
+        assertThat(tur.getTotaltBetalt(mads), is(new Euro(111, 80)));
+        assertThat(tur.getTotaltBetalt(marie), is(new Euro(80, 38)));
 
         Maaltid ucetMaaltid = bratislavaMaaltidFactory.getUdetMaaltid();
         tur.addMaaltid(ucetMaaltid);
-        assertThat(tur.sumOffset(), is(Sum.empty));
-        assertThat(tur.getUtestaaende(mads), is(createSum(-23, 988)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(5, 672)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(-101.088)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(24, 132)));
-        assertThat(tur.getUtestaaende(edvard), is(createSum(31, 777)));
-        assertThat(tur.getUtestaaende(freddy), is(createSum(46, 787)));
-        assertThat(tur.getUtestaaende(lorents), is(createSum(16, 707)));
+        assertThat(tur.sumOffset(), is(Euro.empty));
+        assertThat(tur.getUtestaaende(mads), is(createEuro(-23, 988)));
+        assertThat(tur.getUtestaaende(marie), is(createEuro(5, 672)));
+        assertThat(tur.getUtestaaende(paal), is(createEuro(-101.088)));
+        assertThat(tur.getUtestaaende(sofie), is(createEuro(24, 132)));
+        assertThat(tur.getUtestaaende(edvard), is(createEuro(31, 777)));
+        assertThat(tur.getUtestaaende(freddy), is(createEuro(46, 787)));
+        assertThat(tur.getUtestaaende(lorents), is(createEuro(16, 707)));
         // ucetMaaltid.print();
-        assertThat(tur.getSum(), is(new Sum(561, 83)));
+        assertThat(tur.getSum(), is(new Euro(561, 83)));
 
         Maaltid urbanBistroMaaltid = bratislavaMaaltidFactory.getUrbanBistroMaaltid();
         tur.addMaaltid(urbanBistroMaaltid);
-        assertThat(tur.sumOffset(), is(Sum.empty));
-        assertThat(tur.getSum(), is(new Sum(611, 83)));
-        assertThat(tur.getUtestaaende(mads), is(createSum(-11, 488)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(18, 172)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(-98.588)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(-3, 368)));
-        assertThat(tur.getUtestaaende(edvard), is(createSum(31, 777)));
-        assertThat(tur.getUtestaaende(freddy), is(createSum(46, 787)));
-        assertThat(tur.getUtestaaende(lorents), is(createSum(16, 707)));
+        assertThat(tur.sumOffset(), is(Euro.empty));
+        assertThat(tur.getSum(), is(new Euro(611, 83)));
+        assertThat(tur.getUtestaaende(mads), is(createEuro(-11, 488)));
+        assertThat(tur.getUtestaaende(marie), is(createEuro(18, 172)));
+        assertThat(tur.getUtestaaende(paal), is(createEuro(-98.588)));
+        assertThat(tur.getUtestaaende(sofie), is(createEuro(-3, 368)));
+        assertThat(tur.getUtestaaende(edvard), is(createEuro(31, 777)));
+        assertThat(tur.getUtestaaende(freddy), is(createEuro(46, 787)));
+        assertThat(tur.getUtestaaende(lorents), is(createEuro(16, 707)));
 
         Maaltid iLeiligheta = bratislavaMaaltidFactory.getILeiligheta();
         tur.addMaaltid(iLeiligheta);
-        assertThat(tur.sumOffset(), is(Sum.empty));
-        assertThat(tur.getUtestaaende(mads), is(createSum(-12, 488)));
-        assertThat(tur.getUtestaaende(marie), is(createSum(1, 172)));
-        assertThat(tur.getUtestaaende(paal), is(createSum(-98, 588)));
-        assertThat(tur.getUtestaaende(sofie), is(createSum(2, 632)));
-        assertThat(tur.getUtestaaende(lorents), is(createSum(28, 707)));
-        assertThat(tur.getUtestaaende(edvard), is(createSum(37, 777)));
-        assertThat(tur.getUtestaaende(freddy), is(createSum(40, 787)));
+        assertThat(tur.sumOffset(), is(Euro.empty));
+        assertThat(tur.getUtestaaende(mads), is(createEuro(-12, 488)));
+        assertThat(tur.getUtestaaende(marie), is(createEuro(1, 172)));
+        assertThat(tur.getUtestaaende(paal), is(createEuro(-98, 588)));
+        assertThat(tur.getUtestaaende(sofie), is(createEuro(2, 632)));
+        assertThat(tur.getUtestaaende(lorents), is(createEuro(28, 707)));
+        assertThat(tur.getUtestaaende(edvard), is(createEuro(37, 777)));
+        assertThat(tur.getUtestaaende(freddy), is(createEuro(40, 787)));
+
+        Maaltid overnattingBratislava = bratislavaMaaltidFactory.getOvernattingBratislava();
+        tur.addMaaltid(overnattingBratislava);
+        assertThat(tur.sumOffset(), is(Euro.empty));
+
 
         printSluttrapport(tur);
     }
@@ -233,14 +233,13 @@ public class BratislavaTest {
         tur.printRapportMedRettarFor(edvard);
 
         StringBuilder stringBuilder = new StringBuilder()
-                .append("\nUteståande Mads: ").append(tur.getUtestaaende(mads))
-                .append("\nUteståande Marie: ").append(tur.getUtestaaende(marie))
-                .append("\nUteståande Pål: ").append(tur.getUtestaaende(paal))
-                .append("\nUteståande Sofie: ").append(tur.getUtestaaende(sofie))
-                .append("\nUteståande Lorents: ").append(tur.getUtestaaende(lorents))
-                .append("\nUteståande Freddy: ").append(tur.getUtestaaende(freddy))
-                .append("\nUteståande Edvard: ").append(tur.getUtestaaende(edvard))
-                .append("\n(Alt i euro)");
+                .append("\nUteståande Mads: ").append(tur.getUtestaaende(mads).getOriginalAndNOK())
+                .append("\nUteståande Marie: ").append(tur.getUtestaaende(marie).getOriginalAndNOK())
+                .append("\nUteståande Pål: ").append(tur.getUtestaaende(paal).getOriginalAndNOK())
+                .append("\nUteståande Sofie: ").append(tur.getUtestaaende(sofie).getOriginalAndNOK())
+                .append("\nUteståande Lorents: ").append(tur.getUtestaaende(lorents).getOriginalAndNOK())
+                .append("\nUteståande Freddy: ").append(tur.getUtestaaende(freddy).getOriginalAndNOK())
+                .append("\nUteståande Edvard: ").append(tur.getUtestaaende(edvard).getOriginalAndNOK());
         System.out.println(stringBuilder);
     }
 

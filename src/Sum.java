@@ -1,10 +1,8 @@
 import lombok.Getter;
 
-class Sum {
-    static final Sum empty = new Sum(0, 0);
-
+abstract class Sum<T extends Sum> {
     @Getter
-    private double verdi;
+    protected double verdi;
 
     Sum(double verdi) {
         this.verdi = verdi;
@@ -16,42 +14,42 @@ class Sum {
             return;
         }
         verdi = Double.parseDouble(heltall + "." + fraction);
+
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    abstract T create(double verdi);
 
-        Sum sum = (Sum) o;
-
-        return Math.abs(sum.verdi - verdi) < 0.001;
+    T pluss(T b) {
+        return create(verdi + b.getVerdi());
     }
 
-    @Override
-    public int hashCode() {
-        long temp = Double.doubleToLongBits(verdi);
-        return (int) (temp ^ (temp >>> 32));
+    T minus(T b) {
+        return create(verdi - b.getVerdi());
     }
 
-    Sum pluss(Sum b) {
-        return new Sum(verdi + b.getVerdi());
+    T delPaa(long antallDeltakarar) {
+        return create(verdi / antallDeltakarar);
     }
 
-    Sum minus(Sum b) {
-        return new Sum(verdi - b.getVerdi());
-    }
-
-    Sum delPaa(long antallDeltakarar) {
-        return new Sum(verdi / antallDeltakarar);
-    }
-
-    Sum ganger(int i) {
-        return new Sum(verdi*i);
+    T ganger(int i) {
+        return create(verdi*i);
     }
 
     @Override
     public String toString() {
-        return String.format("%.3f", verdi);
+        return String.format("%.3f", verdi) +" " +getSymbol();
     }
+
+    abstract String getSymbol();
+
+    String getOriginalAndNOK() {
+        return toString() +" ( " +convertToNOK() +")";
+    }
+
+    private NOK convertToNOK() {
+        double nokVerdi = verdi * getKurs1SaannTilNOK();
+        return new NOK(nokVerdi);
+    }
+
+    abstract double getKurs1SaannTilNOK();
 }

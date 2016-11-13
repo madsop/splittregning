@@ -31,25 +31,25 @@ class Maaltid {
         return namn + " (" + getSum() + ")";
     }
 
-    void addBetaling(Deltakar deltakar, Sum sum) {
+    <T extends Sum<T>> void addBetaling(Deltakar deltakar, Sum<T> sum) {
         if (betaler != null) {
             throw new RuntimeException("Motstridande data");
         }
 
-        betalingar.add(new Betaling(deltakar, sum));
+        betalingar.add(new Betaling<>(deltakar, sum));
     }
 
     void setBetaler(Deltakar deltakar) {
         this.betaler = deltakar;
-        betalingar.add(new Betaling(deltakar, getSum()));
+        betalingar.add(new Betaling<>(deltakar, getSum()));
     }
 
     Sum getUtestaaende(Deltakar deltakar) {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
-            return Sum.empty;
+            return Euro.empty;
         }
         Sum betalt = betalingar.stream().filter(betaling -> deltakar.equals(betaling.getDeltakar()))
-                .map(Betaling::getSum).reduce(new Sum(0, 0), Sum::pluss);
+                .map(Betaling::getSum).reduce(new Euro(0, 0), Sum::pluss);
         Sum skalBetaleFor = getBruktFor(deltakar);
         return betalt.minus(skalBetaleFor).ganger(-1);
 
@@ -63,22 +63,22 @@ class Maaltid {
         return retter.stream()
                 .filter(x -> x.harDeltakar(deltakar))
                 .map(Rett::getBeloepPerPerson)
-                .reduce(new Sum(0,0), Sum::pluss)
+                .reduce(new Euro(0,0), Sum::pluss)
                 .pluss(getSumPerPersonForFellesRett(deltakar));
     }
 
     Sum getSum() {
-        return retter.stream().map(Rett::getBeloep).reduce(new Sum(0,0), Sum::pluss);
+        return retter.stream().map(Rett::getBeloep).reduce(new Euro(0,0), Sum::pluss);
     }
 
     private Sum getSumPerPersonForFellesRett(Deltakar deltakar) {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
-            return Sum.empty;
+            return Euro.empty;
         }
         return retter.stream()
                 .filter(Rett::isFellesRett)
                 .map(Rett::getBeloep)
-                .reduce(new Sum(0, 0), Sum::pluss)
+                .reduce(new Euro(0, 0), Sum::pluss)
                 .delPaa(getAntallDeltakarar());
     }
 
@@ -105,7 +105,7 @@ class Maaltid {
 
     Sum getBetaltFelles(Deltakar deltakar) {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
-            return Sum.empty;
+            return Euro.empty;
         }
         return getSumPerPersonForFellesRett(deltakar);
     }

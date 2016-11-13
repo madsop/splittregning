@@ -31,13 +31,13 @@ class Tur {
     }
 
     private Sum reduce(Stream<Sum> s) {
-        return s.reduce(new Sum(0, 0), Sum::pluss);
+        return s.reduce(new Euro(0, 0), Sum::pluss);
     }
 
     Sum sumOffset() {
         Stream<Sum> stream = deltakarar.stream().map(this::getUtestaaende);
         List<Sum> collect = stream.collect(Collectors.toList());
-        Sum total = new Sum(0, 0);
+        Sum total = new Euro(0, 0);
         for (Sum s : collect) {
             total = total.pluss(s);
         }
@@ -49,7 +49,7 @@ class Tur {
                 .flatMap(x -> x.getBetalingar().stream())
                 .filter(x -> x.getDeltakar().equals(deltakar))
                 .map(Betaling::getSum)
-                .reduce(new Sum(0, 0), Sum::pluss);
+                .reduce(new Euro(0, 0), Sum::pluss);
     }
 
     Sum getTotaltBruktUtenFelles(Deltakar deltakar) {
@@ -57,7 +57,7 @@ class Tur {
     }
 
     Sum getTotaltBruktMedFelles(Deltakar deltakar) {
-        return maaltider.stream().map(x -> x.getBruktFor(deltakar)).reduce(new Sum(0, 0), Sum::pluss);
+        return maaltider.stream().map(x -> x.getBruktFor(deltakar)).reduce(new Euro(0, 0), Sum::pluss);
     }
 
     private Sum getTotaltBruktGivenFilter(Predicate<Rett> rettPredicate) {
@@ -65,11 +65,11 @@ class Tur {
                 .flatMap(x -> x.getRetter().stream())
                 .filter(rettPredicate)
                 .map(Rett::getBeloepPerPerson)
-                .reduce(new Sum(0, 0), Sum::pluss);
+                .reduce(new Euro(0, 0), Sum::pluss);
     }
 
     Sum getTotaltBruktFelles(Deltakar deltakar) {
-        return maaltider.stream().map(x -> x.getBetaltFelles(deltakar)).reduce(new Sum(0, 0), Sum::pluss);
+        return maaltider.stream().map(x -> x.getBetaltFelles(deltakar)).reduce(new Euro(0, 0), Sum::pluss);
     }
 
     private void printRapportFor(Deltakar deltakar) {

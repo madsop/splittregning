@@ -12,10 +12,6 @@ class Rett {
     private final Sum beloep;
     private final Set<Deltakar> deltakarar;
 
-    Rett(int heltall, int fraction, Deltakar deltakar, String namn) {
-        this(namn, new Sum(heltall, fraction), deltakar);
-    }
-
     Rett(String namn, Sum beloep, Deltakar... deltakarar) {
         this.namn = namn;
         this.beloep = beloep;

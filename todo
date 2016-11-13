@@ -1,1 +1,2 @@
 - utvide sum til å handtere valuta
+- lag git exclude som tar bort .class, .iml, workspace.xml

@@ -102,10 +102,10 @@ class BratislavaMaaltidFactory {
                 makovesulanceDessertMads, makovesulanceDessertPaal, makovesulanceDessertLorents, cokotortaDessert,
                 kaffe, baileys, service, driks);
         assertThat(kaninMaaltid.getSum(), is(createSum(247, 0)));
-        assertThat(kaninMaaltid.getUtestaaende(mads), is(new Sum(35.086)));
+        assertThat(kaninMaaltid.getUtestaaende(mads), is(new Euro(35.086)));
         assertThat(kaninMaaltid.getUtestaaende(marie), is(createSum(34, 856)));
         assertThat(kaninMaaltid.getUtestaaende(paal), is(createSum(36, 586)));
-        assertThat(kaninMaaltid.getUtestaaende(lorents), is(new Sum(33.086)));
+        assertThat(kaninMaaltid.getUtestaaende(lorents), is(new Euro(33.086)));
         assertThat(kaninMaaltid.getUtestaaende(edvard), is(createSum(44, 346)));
         assertThat(kaninMaaltid.getUtestaaende(freddy), is(createSum(38, 356)));
         assertThat(kaninMaaltid.getUtestaaende(sofie), is(createSum(24, 686)));
@@ -115,8 +115,8 @@ class BratislavaMaaltidFactory {
         kaninMaaltid.addBetaling(mads, createSum(50, 0));
         kaninMaaltid.addBetaling(paal, createSum(90, 0));
         kaninMaaltid.addBetaling(marie, createSum(10, 0));
-        assertThat(kaninMaaltid.getUtestaaende(mads), is(new Sum(-14.914)));
-        assertThat(kaninMaaltid.getUtestaaende(lorents), is(new Sum(33.086)));
+        assertThat(kaninMaaltid.getUtestaaende(mads), is(new Euro(-14.914)));
+        assertThat(kaninMaaltid.getUtestaaende(lorents), is(new Euro(33.086)));
         assertThat(kaninMaaltid.getUtestaaende(sofie), is(createSum(0, -314)));
         assertThat(kaninMaaltid.getUtestaaende(marie), is(createSum(24, 856)));
         assertThat(kaninMaaltid.getUtestaaende(edvard), is(createSum(12, 346)));
@@ -162,8 +162,8 @@ class BratislavaMaaltidFactory {
         return udetMaaltid;
     }
 
-    private Sum createSum(double verdi) {
-        return new Sum(verdi);
+    private Euro createSum(double verdi) {
+        return new Euro(verdi);
     }
 
     Maaltid getUrbanSpaceMaaltid() {
@@ -244,8 +244,8 @@ class BratislavaMaaltidFactory {
         return kontaktMaaltid;
     }
 
-    private Sum createSum(int heltall, int fraction) {
-        return new Sum(heltall, fraction);
+    private Euro createSum(int heltall, int fraction) {
+        return new Euro(heltall, fraction);
     }
 
     Maaltid getUrbanBistroMaaltid() {
@@ -254,7 +254,7 @@ class BratislavaMaaltidFactory {
         urbanBistroMaaltid.addBetaling(paal, createSum(10, 0));
         urbanBistroMaaltid.addBetaling(sofie, createSum(40, 0));
 
-        assertThat(urbanBistroMaaltid.getSum(), is(new Sum(50, 0)));
+        assertThat(urbanBistroMaaltid.getSum(), is(new Euro(50, 0)));
         assertThat(urbanBistroMaaltid.getUtestaaende(mads), is(createSum(12, 50)));
         assertThat(urbanBistroMaaltid.getUtestaaende(marie), is(createSum(12, 50)));
         assertThat(urbanBistroMaaltid.getUtestaaende(paal), is(createSum(2, 50)));
@@ -282,5 +282,22 @@ class BratislavaMaaltidFactory {
         assertThat(iLeiligheta.getUtestaaende(sofie), is(createSum(6, 0)));
         assertThat(iLeiligheta.getUtestaaende(edvard), is(createSum(6, 0)));
         return iLeiligheta;
+    }
+
+    Maaltid getOvernattingBratislava() {
+        double verdi = 298.285;
+        Sum<Euro> beloep = new Euro(verdi);
+        Rett leilighetBratislava = new Rett("Leilighet Bratislava", beloep, mads, marie, paal, sofie, lorents, freddy, edvard);
+        Maaltid overnattingBratislava = new Maaltid(leilighetBratislava);
+        overnattingBratislava.addBetaling(mads, beloep);
+        assertThat(overnattingBratislava.getUtestaaende(mads), is(createSum(-255, 673)));
+        assertThat(overnattingBratislava.getUtestaaende(marie), is(createSum(42, 612)));
+        assertThat(overnattingBratislava.getUtestaaende(paal), is(createSum(42, 612)));
+        assertThat(overnattingBratislava.getUtestaaende(sofie), is(createSum(42, 612)));
+        assertThat(overnattingBratislava.getUtestaaende(freddy), is(createSum(42, 612)));
+        assertThat(overnattingBratislava.getUtestaaende(lorents), is(createSum(42, 612)));
+        assertThat(overnattingBratislava.getUtestaaende(edvard), is(createSum(42, 612)));
+        assertThat(overnattingBratislava.getSum(), is(createSum(298, 285)));
+        return overnattingBratislava;
     }
 }
