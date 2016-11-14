@@ -1,2 +1,5 @@
 - utvide sum til å handtere valuta
 - lag git exclude som tar bort .class, .iml, workspace.xml
+- integrere mot vipps
+- tydeleg api - tar inn data, gir ut fordeling
+- sette opp maven/gradle

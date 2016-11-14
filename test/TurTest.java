@@ -12,17 +12,18 @@ public class TurTest {
         Deltakar marie = new Deltakar("Marie");
         tur.addDeltakarar(mads, marie);
 
-        Rett rettEuro = new Rett("Eurorett", new Euro(10, 0), mads, marie);
-        Maaltid maaltidEuro = new Maaltid(rettEuro);
+        Rett rettEuro = new Rett<>("Eurorett", new Euro(10, 0), mads, marie);
+        Maaltid<Euro> maaltidEuro = new Maaltid<>("", rettEuro);
         tur.addMaaltid(maaltidEuro);
         maaltidEuro.addBetaling(mads, new Euro(10, 0));
 
-        Rett rettNOK = new Rett("NOKrett", new NOK(10, 0), mads, marie);
-        Maaltid maaltidNOK = new Maaltid(rettNOK);
+        Rett rettNOK = new Rett<>("NOKrett", new NOK(10, 0), mads, marie);
+        Maaltid<NOK> maaltidNOK = new Maaltid<>("", rettNOK);
         tur.addMaaltid(maaltidNOK);
         maaltidNOK.addBetaling(marie, new NOK(10, 0));
 
 //        assertThat(tur.getSum(), is())
+        assertThat(tur.getSum(), is(new NOK(103, 33)));
     }
 
     @Test

@@ -7,12 +7,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Getter
-class Rett {
+class Rett<T extends Sum<T>> {
     private final String namn;
-    private final Sum beloep;
+    private final Sum<T> beloep;
     private final Set<Deltakar> deltakarar;
 
-    Rett(String namn, Sum beloep, Deltakar... deltakarar) {
+    Rett(String namn, Sum<T> beloep, Deltakar... deltakarar) {
         this.namn = namn;
         this.beloep = beloep;
         this.deltakarar = new HashSet<>();

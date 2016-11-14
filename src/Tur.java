@@ -45,8 +45,9 @@ class Tur {
     }
 
     Sum getTotaltBetalt(Deltakar deltakar) {
-        return maaltider.stream()
-                .flatMap(x -> x.getBetalingar().stream())
+        Stream<Betaling> stream = maaltider.stream()
+                .flatMap(x -> x.getBetalingar().stream());
+        return stream
                 .filter(x -> x.getDeltakar().equals(deltakar))
                 .map(Betaling::getSum)
                 .reduce(new Euro(0, 0), Sum::pluss);
@@ -61,9 +62,10 @@ class Tur {
     }
 
     private Sum getTotaltBruktGivenFilter(Predicate<Rett> rettPredicate) {
-        return maaltider.stream()
+        Stream<Rett> stream = maaltider.stream()
                 .flatMap(x -> x.getRetter().stream())
-                .filter(rettPredicate)
+                .filter(rettPredicate);
+        return stream
                 .map(Rett::getBeloepPerPerson)
                 .reduce(new Euro(0, 0), Sum::pluss);
     }
@@ -106,7 +108,8 @@ class Tur {
     }
 
     private List<String> getRettarForFellesPrint(Deltakar deltakar, Maaltid x) {
-        return x.getRetterFelles(deltakar).stream()
+        Stream<Rett> stream = x.getRetterFelles(deltakar).stream();
+        return stream
                 .map(y ->
                         y.getNamn() + ", andel " +
                         y.getBeloep().delPaa(x.getAntallDeltakarar())).collect(Collectors.toList());

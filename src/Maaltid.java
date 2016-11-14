@@ -4,7 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-class Maaltid {
+class Maaltid<T extends Sum<T>> {
+
     @Getter
     private String namn;
 
@@ -12,18 +13,15 @@ class Maaltid {
     private List<Rett> retter;
 
     private Deltakar betaler;
+
     @Getter
     private Set<Betaling> betalingar;
 
     Maaltid(String namn, Rett... rettar) {
-        this(rettar);
         this.namn = namn;
-    }
-
-    Maaltid(Rett... rett) {
         retter = new ArrayList<>();
         betalingar = new HashSet<>();
-        Arrays.stream(rett).forEach(retter::add);
+        Arrays.stream(rettar).forEach(retter::add);
     }
 
     @Override
@@ -31,7 +29,7 @@ class Maaltid {
         return namn + " (" + getSum() + ")";
     }
 
-    <T extends Sum<T>> void addBetaling(Deltakar deltakar, Sum<T> sum) {
+    void addBetaling(Deltakar deltakar, Sum<T> sum) {
         if (betaler != null) {
             throw new RuntimeException("Motstridande data");
         }
