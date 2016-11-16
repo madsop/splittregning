@@ -52,8 +52,7 @@ class Tur {
     }
 
     private Sum getTotaltBruktGivenFilter(Predicate<Rett> rettPredicate) {
-        List<Rett> stream = maaltider.flatMap(x -> x.getRetter()).filter(rettPredicate);
-        return stream
+        return maaltider.flatMap(Maaltid::getRetter).filter(rettPredicate)
                 .map(Rett::getBeloepPerPerson)
                 .fold(Euro.createNullSum(), Sum::pluss);
     }

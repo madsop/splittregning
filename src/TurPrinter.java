@@ -1,13 +1,9 @@
+import javaslang.collection.List;
 import lombok.RequiredArgsConstructor;
-
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @RequiredArgsConstructor
 class TurPrinter {
     private final Tur tur;
-
 
     private void printRapportFor(Deltakar deltakar) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -28,27 +24,23 @@ class TurPrinter {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Dette var fordelt på \n").append(
                 tur.getMaaltider()
-                        .filter(x -> !x.deltokIkkePaaDetteMaaltidet(deltakar))
-                        .map(x -> "Måltid " +x +": " +x.getRetterFor(deltakar))
-                        .intersperse("\n")
-                        .fold("", String::concat)
+                        .filter(maaltid -> !maaltid.deltokIkkePaaDetteMaaltidet(deltakar))
+                        .map(maaltid -> "Måltid " +maaltid +": " +maaltid.getRetterFor(deltakar))
+                        .mkString("\n")
+
         );
         stringBuilder.append("\n Pluss delar i fellesrettar/rettar eg ikkje har klart å spore tilbake \n").append(
                 tur.getMaaltider()
                         .filter(maaltid -> !maaltid.deltokIkkePaaDetteMaaltidet(deltakar))
                         .filter(maaltid -> !maaltid.getRetterFelles(deltakar).isEmpty())
                         .map(maaltid -> "Måltid " +maaltid +": " + getRettarForFellesPrint(deltakar, maaltid))
-                        .intersperse("\n")
-                        .fold("", String::concat)
+                        .mkString("\n")
         );
         print(stringBuilder);
     }
 
-    private List<String> getRettarForFellesPrint(Deltakar deltakar, Maaltid x) {
-        Stream<Rett> stream = x.getRetterFelles(deltakar).stream();
-        return stream
-                .map(y ->
-                        y.getNamn() + ", andel " +
-                                y.getBeloep().delPaa(x.getAntallDeltakarar())).collect(Collectors.toList());
+    private List<String> getRettarForFellesPrint(Deltakar deltakar, Maaltid maaltid) {
+        return maaltid.getRetterFelles(deltakar)
+                .map(rett -> rett.getNamn() + ", andel " +rett.getBeloep().delPaa(maaltid.getAntallDeltakarar()));
     }
 }

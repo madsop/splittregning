@@ -1,10 +1,11 @@
+import javaslang.collection.HashSet;
+import javaslang.collection.List;
+import javaslang.collection.Set;
 import lombok.Getter;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Objects;
 
-class Maaltid<T extends Sum<T>> {
+class Maaltid {
 
     @Getter
     private String namn;
@@ -19,9 +20,8 @@ class Maaltid<T extends Sum<T>> {
 
     Maaltid(String namn, Rett... rettar) {
         this.namn = namn;
-        retter = new ArrayList<>();
-        betalingar = new HashSet<>();
-        Arrays.stream(rettar).forEach(retter::add);
+        retter = List.of(rettar);
+        betalingar = HashSet.empty();
     }
 
     @Override
@@ -29,73 +29,74 @@ class Maaltid<T extends Sum<T>> {
         return namn + " (" + getSum() + ")";
     }
 
-    void addBetaling(Deltakar deltakar, Sum<T> sum) {
+    void addBetaling(Deltakar deltakar, Sum sum) {
         if (betaler != null) {
             throw new RuntimeException("Motstridande data");
         }
 
-        betalingar.add(new Betaling<>(deltakar, sum));
+        betalingar = betalingar.add(new Betaling(deltakar, sum));
     }
 
     void setBetaler(Deltakar deltakar) {
         this.betaler = deltakar;
-        betalingar.add(new Betaling<>(deltakar, getSum()));
+        betalingar = betalingar.add(new Betaling(deltakar, getSum()));
     }
 
     Sum getUtestaaende(Deltakar deltakar) {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
             return Euro.empty;
         }
-        Sum betalt = betalingar.stream().filter(betaling -> deltakar.equals(betaling.getDeltakar()))
-                .map(Betaling::getSum).reduce(new Euro(0, 0), Sum::pluss);
+        Sum betalt = betalingar.filter(betaling -> deltakar.equals(betaling.getDeltakar()))
+                .map(Betaling::getSum).fold(new Euro(0, 0), Sum::pluss);
         Sum skalBetaleFor = getBruktFor(deltakar);
         return betalt.minus(skalBetaleFor).ganger(-1);
 
     }
 
     boolean deltokIkkePaaDetteMaaltidet(Deltakar deltakar) {
-        return retter.stream().noneMatch(x -> x.harDeltakar(deltakar));
+        return !retter.exists(x -> x.harDeltakar(deltakar));
     }
 
     Sum getBruktFor(Deltakar deltakar) {
-        return retter.stream()
+        return retter
                 .filter(x -> x.harDeltakar(deltakar))
                 .map(Rett::getBeloepPerPerson)
-                .reduce(new Euro(0,0), Sum::pluss)
+                .fold(new Euro(0,0), Sum::pluss)
                 .pluss(getSumPerPersonForFellesRett(deltakar));
     }
 
     Sum getSum() {
-        return retter.stream().map(Rett::getBeloep).reduce(Sum.createNull(retter.iterator().next().getBeloep().getClass()), Sum::pluss);
+        return retter.map(Rett::getBeloep).fold(Sum.createNull(retter.iterator().next().getBeloep().getClass()), Sum::pluss);
     }
 
     private Sum getSumPerPersonForFellesRett(Deltakar deltakar) {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
             return Euro.empty;
         }
-        return retter.stream()
+        return retter
                 .filter(Rett::isFellesRett)
                 .map(Rett::getBeloep)
-                .reduce(new Euro(0, 0), Sum::pluss)
+                .fold(new Euro(0, 0), Sum::pluss)
                 .delPaa(getAntallDeltakarar());
     }
 
     long getAntallDeltakarar() {
-        return getDeltakarar().count();
+        return getDeltakarar().size();
     }
 
-    private Stream<Deltakar> getDeltakarar() {
-        return retter.stream().flatMap(rett -> rett.getDeltakarar().stream()).filter(Objects::nonNull).distinct();
+    private List<Deltakar> getDeltakarar() {
+        return retter.flatMap(Rett::getDeltakarar).filter(Objects::nonNull).distinct();
     }
 
     void print() {
         System.out.println(
                 "------------------------------------------- \n" +
-                "Måltid for " + getDeltakarar().map(Deltakar::getNamn).collect(Collectors.joining(", ")) +"\n"
-                + betalingar.stream().map(Betaling::toString).reduce("", (a, b) -> a + "\n" +b)
+                "Måltid for " + getDeltakarar().map(Deltakar::getNamn).intersperse(", ").fold("", String::concat)
+                +"\n"
+                + betalingar.map(Betaling::toString).mkString("\n")
                         + "\n betalte totalsummen på " + getSum() + ".\n\n"
                 + "Rettane var: \n"
-                + retter.stream().map(Object::toString).collect(Collectors.joining("\n"))
+                + retter.map(Object::toString).intersperse("\n").fold("", String::concat)
                 + "\n"
                 + "------------------------------------------- \n"
         );
@@ -109,13 +110,13 @@ class Maaltid<T extends Sum<T>> {
     }
 
     List<Rett> getRetterFor(Deltakar deltakar) {
-        return retter.stream().filter(x -> x.harDeltakar(deltakar)).collect(Collectors.toList());
+        return retter.filter(rett -> rett.harDeltakar(deltakar));
     }
 
     List<Rett> getRetterFelles(Deltakar deltakar) {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
-            return Collections.emptyList();
+            return List.empty();
         }
-        return retter.stream().filter(Rett::isFellesRett).collect(Collectors.toList());
+        return retter.filter(Rett::isFellesRett);
     }
 }

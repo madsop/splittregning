@@ -1,7 +1,7 @@
 import lombok.Data;
 
 @Data
-class Betaling<T extends Sum> {
+class Betaling {
     private final Deltakar deltakar;
-    private final Sum<T> sum;
+    private final Sum sum;
 }

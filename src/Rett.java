@@ -1,30 +1,26 @@
+import javaslang.collection.HashSet;
+import javaslang.collection.Set;
 import lombok.Getter;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 @Getter
-class Rett<T extends Sum<T>> {
+class Rett {
     private final String namn;
-    private final T beloep;
+    private final Sum beloep;
     private final Set<Deltakar> deltakarar;
 
-    Rett(String namn, T beloep, Deltakar... deltakarar) {
+    Rett(String namn, Sum beloep, Deltakar... deltakarar) {
         this.namn = namn;
         this.beloep = beloep;
-        this.deltakarar = new HashSet<>(Arrays.stream(deltakarar).filter(Objects::nonNull).collect(Collectors.toSet()));
+        this.deltakarar = HashSet.of(deltakarar);
     }
 
-    T getBeloepPerPerson() {
+    Sum getBeloepPerPerson() {
         return beloep.delPaa(deltakarar.size());
     }
 
     @Override
     public String toString() {
-        return namn + "(" + deltakarar.stream().map(Object::toString).collect(Collectors.joining(", ")) +", " +beloep +")";
+        return namn + "(" + deltakarar.map(Object::toString).mkString (", ")  +", " +beloep +")";
     }
 
     boolean harDeltakar(Deltakar deltakar) {
