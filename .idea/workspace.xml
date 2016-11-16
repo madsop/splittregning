@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c188a1b-b8ad-43b9-821e-b2ac92372dfe" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/javaslang_2_0_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/lombok.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/SplitRegning/Betaling.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/SplitRegning/Deltakar.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/SplitRegning/Maaltid.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/SplitRegning/Rett.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/SplitRegning/Sum.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/SplitRegning/Tur.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/SplitRegning/BratislavaTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/SplitRegning/MaaltidTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/SplitRegning/SumTest.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SplitRegning.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -726,7 +726,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479330923280</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Meir konfig for å få bort intellij-filer">
+      <created>1479330979835</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1479330979835</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -848,7 +855,8 @@
     <MESSAGE value="Meir javaslang, pluss prøver å fjerne class og iml" />
     <MESSAGE value="Fjernar fleire class-filer og intellij-filer" />
     <MESSAGE value="Oppdaterer todo og lager tom readme-fil" />
-    <option name="LAST_COMMIT_MESSAGE" value="Oppdaterer todo og lager tom readme-fil" />
+    <MESSAGE value="Meir konfig for å få bort intellij-filer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Meir konfig for å få bort intellij-filer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
