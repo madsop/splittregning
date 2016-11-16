@@ -22,4 +22,8 @@ class NOK extends Sum<NOK> {
     double getKurs1SaannTilNOK() {
         return 1;
     }
+
+    static NOK createNullSum() {
+        return new NOK(0, 0);
+    }
 }

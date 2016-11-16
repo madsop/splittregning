@@ -30,8 +30,7 @@ public class BratislavaTest {
 
     @Test
     public void getUtestaaendeFor3120Maaltid() {
-        Tur tur = new Tur();
-        tur.addDeltakarar(mads, marie, paal, sofie, freddy, lorents, edvard);
+        Tur tur = new Tur(mads, marie, paal, sofie, freddy, lorents, edvard);
 
         Maaltid lePapillonMaaltid = bratislavaMaaltidFactory.getLePapillonMaaltid(mads, marie, paal, sofie);
         tur.addMaaltid(lePapillonMaaltid);
@@ -46,8 +45,7 @@ public class BratislavaTest {
 
     @Test
     public void getUtestaaendeForRedLion3060() {
-        Tur tur = new Tur();
-        tur.addDeltakarar(mads, marie, paal, sofie, freddy, lorents, edvard);
+        Tur tur = new Tur(mads, marie, paal, sofie, freddy, lorents, edvard);
 
         Maaltid redLionMaaltid = bratislavaMaaltidFactory.getTheRedLionMaaltid(mads, marie, paal, sofie, lorents, edvard, freddy);
         tur.addMaaltid(redLionMaaltid);
@@ -58,8 +56,7 @@ public class BratislavaTest {
 
     @Test
     public void getUtestaaendeForRedLion3060OgPapillon3120() {
-        Tur tur = new Tur();
-        tur.addDeltakarar(mads, marie, paal, sofie, freddy, lorents, edvard);
+        Tur tur = new Tur(mads, marie, paal, sofie, freddy, lorents, edvard);
 
         Maaltid redLionMaaltid = bratislavaMaaltidFactory.getTheRedLionMaaltid(mads, marie, paal, sofie, lorents, edvard, freddy);
         tur.addMaaltid(redLionMaaltid);
@@ -70,11 +67,12 @@ public class BratislavaTest {
         assertThat(tur.sumOffset(), is(Euro.empty));
         assertThat(tur.getTotaltBruktUtenFelles(mads), is(new Euro(13, 70)));
         assertThat(tur.getTotaltBruktMedFelles(mads), is(new Euro(14, 425)));
-        assertThat(tur.getTotaltBruktFelles(mads), is(new Euro(0, 725)));
-        assertThat(tur.getTotaltBruktFelles(lorents), is(Euro.empty));
+        assertThat(tur.getTotaltBruktKunFelles(mads), is(new Euro(0, 725)));
+        assertThat(tur.getTotaltBruktKunFelles(lorents), is(Euro.empty));
 
-        tur.printRapportMedRettarFor(mads);
-        tur.printRapportMedRettarFor(lorents);
+        TurPrinter turPrinter = new TurPrinter(tur);
+        turPrinter.printRapportMedRettarFor(mads);
+        turPrinter.printRapportMedRettarFor(lorents);
     }
 
     private Euro createEuro(int heltall, int fraction) {
@@ -87,8 +85,7 @@ public class BratislavaTest {
 
     @Test
     public void getUtestaaendeForHeleTuren() {
-        Tur tur = new Tur();
-        tur.addDeltakarar(mads, marie, paal, sofie, freddy, lorents, edvard);
+        Tur tur = new Tur(mads, marie, paal, sofie, freddy, lorents, edvard);
 
         Maaltid lePapillonMaaltid = bratislavaMaaltidFactory.getLePapillonMaaltid(mads, marie, paal, sofie);
         tur.addMaaltid(lePapillonMaaltid);
@@ -218,19 +215,20 @@ public class BratislavaTest {
     }
 
     private void printSluttrapport(Tur tur) {
-        tur.printRapportMedRettarFor(mads);
+        TurPrinter turPrinter = new TurPrinter(tur);
+        turPrinter.printRapportMedRettarFor(mads);
         printSkiljeline();
-        tur.printRapportMedRettarFor(marie);
+        turPrinter.printRapportMedRettarFor(marie);
         printSkiljeline();
-        tur.printRapportMedRettarFor(paal);
+        turPrinter.printRapportMedRettarFor(paal);
         printSkiljeline();
-        tur.printRapportMedRettarFor(sofie);
+        turPrinter.printRapportMedRettarFor(sofie);
         printSkiljeline();
-        tur.printRapportMedRettarFor(lorents);
+        turPrinter.printRapportMedRettarFor(lorents);
         printSkiljeline();
-        tur.printRapportMedRettarFor(freddy);
+        turPrinter.printRapportMedRettarFor(freddy);
         printSkiljeline();
-        tur.printRapportMedRettarFor(edvard);
+        turPrinter.printRapportMedRettarFor(edvard);
 
         StringBuilder stringBuilder = new StringBuilder()
                 .append("\nUteståande Mads: ").append(tur.getUtestaaende(mads).getOriginalAndNOK())

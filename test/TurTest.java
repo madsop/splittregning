@@ -7,10 +7,9 @@ public class TurTest {
 
     @Test
     public void valuta() {
-        Tur tur = new Tur();
         Deltakar mads = new Deltakar("Mads");
         Deltakar marie = new Deltakar("Marie");
-        tur.addDeltakarar(mads, marie);
+        Tur tur = new Tur(mads, marie);
 
         Rett rettEuro = new Rett<>("Eurorett", new Euro(10, 0), mads, marie);
         Maaltid<Euro> maaltidEuro = new Maaltid<>("", rettEuro);
@@ -22,8 +21,7 @@ public class TurTest {
         tur.addMaaltid(maaltidNOK);
         maaltidNOK.addBetaling(marie, new NOK(10, 0));
 
-//        assertThat(tur.getSum(), is())
-        assertThat(tur.getSum(), is(new NOK(103, 33)));
+        assertThat(tur.getSumINOK(), is(new NOK(103, 300)));
     }
 
     @Test

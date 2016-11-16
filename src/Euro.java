@@ -9,21 +9,6 @@ class Euro extends Sum<Euro> {
         super(heltall, fraction);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Euro sum = (Euro) o;
-
-        return Math.abs(sum.verdi - verdi) < 0.001;
-    }
-
-    @Override
-    public int hashCode() {
-        long temp = Double.doubleToLongBits(verdi);
-        return (int) (temp ^ (temp >>> 32));
-    }
 
     @Override
     Euro create(double verdi) {
@@ -38,5 +23,9 @@ class Euro extends Sum<Euro> {
     @Override
     double getKurs1SaannTilNOK() {
         return 9.33;
+    }
+
+    static Euro createNullSum() {
+        return new Euro(0, 0);
     }
 }

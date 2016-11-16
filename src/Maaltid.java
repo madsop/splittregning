@@ -66,7 +66,7 @@ class Maaltid<T extends Sum<T>> {
     }
 
     Sum getSum() {
-        return retter.stream().map(Rett::getBeloep).reduce(new Euro(0,0), Sum::pluss);
+        return retter.stream().map(Rett::getBeloep).reduce(Sum.createNull(retter.iterator().next().getBeloep().getClass()), Sum::pluss);
     }
 
     private Sum getSumPerPersonForFellesRett(Deltakar deltakar) {

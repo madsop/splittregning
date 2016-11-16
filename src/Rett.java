@@ -9,17 +9,16 @@ import java.util.stream.Collectors;
 @Getter
 class Rett<T extends Sum<T>> {
     private final String namn;
-    private final Sum<T> beloep;
+    private final T beloep;
     private final Set<Deltakar> deltakarar;
 
-    Rett(String namn, Sum<T> beloep, Deltakar... deltakarar) {
+    Rett(String namn, T beloep, Deltakar... deltakarar) {
         this.namn = namn;
         this.beloep = beloep;
-        this.deltakarar = new HashSet<>();
-        Arrays.stream(deltakarar).filter(Objects::nonNull).forEach(this.deltakarar::add);
+        this.deltakarar = new HashSet<>(Arrays.stream(deltakarar).filter(Objects::nonNull).collect(Collectors.toSet()));
     }
 
-    Sum getBeloepPerPerson() {
+    T getBeloepPerPerson() {
         return beloep.delPaa(deltakarar.size());
     }
 

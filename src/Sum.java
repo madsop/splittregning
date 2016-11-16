@@ -46,10 +46,37 @@ abstract class Sum<T extends Sum> {
         return toString() +" ( " +convertToNOK() +")";
     }
 
-    private NOK convertToNOK() {
-        double nokVerdi = verdi * getKurs1SaannTilNOK();
-        return new NOK(nokVerdi);
+    NOK convertToNOK() {
+        return new NOK(this.verdi * getKurs1SaannTilNOK());
     }
 
     abstract double getKurs1SaannTilNOK();
+
+    static <U extends Sum<U>> Sum createNull(Class<U> clazz){
+        if (clazz.equals(NOK.class)) {
+            return NOK.createNullSum();
+        }
+        else if (clazz.equals(Euro.class)) {
+            return Euro.createNullSum();
+        }
+        return null;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        T sum = (T) o;
+
+        return Math.abs(sum.verdi - verdi) < 0.001;
+    }
+
+    @Override
+    public int hashCode() {
+        long temp = Double.doubleToLongBits(verdi);
+        return (int) (temp ^ (temp >>> 32));
+    }
+
 }

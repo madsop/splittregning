@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="javaslang-2.0.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/javaslang-2.0.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

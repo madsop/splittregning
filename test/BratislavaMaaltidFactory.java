@@ -287,8 +287,8 @@ class BratislavaMaaltidFactory {
     Maaltid getOvernattingBratislava() {
         // TODO: Endre til NOK
         double verdi = 298.285;
-        Sum<Euro> beloep = new Euro(verdi);
-        Rett leilighetBratislava = new Rett<>("Leilighet Bratislava", beloep, mads, marie, paal, sofie, lorents, freddy, edvard);
+        Euro beloep = new Euro(verdi);
+        Rett leilighetBratislava = new Rett<Euro>("Leilighet Bratislava", beloep, mads, marie, paal, sofie, lorents, freddy, edvard);
         Maaltid<Euro> overnattingBratislava = new Maaltid<>("Leilighet Bratislava", leilighetBratislava);
         overnattingBratislava.addBetaling(mads, beloep);
         assertThat(overnattingBratislava.getUtestaaende(mads), is(createSum(-255, 673)));
