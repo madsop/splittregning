@@ -1,3 +1,5 @@
+import org.hamcrest.Matcher;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -160,6 +162,10 @@ class BratislavaMaaltidFactory {
         assertThat(udetMaaltid.getUtestaaende(freddy), is(createSum(14, 621)));
         assertThat(udetMaaltid.getUtestaaende(sofie), is(createSum(11, 671)));
         return udetMaaltid;
+    }
+
+    private Matcher<Euro> getEuroMatcher(Euro sum) {
+        return is(sum);
     }
 
     private Euro createSum(double verdi) {

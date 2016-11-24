@@ -1,3 +1,5 @@
+import javaslang.collection.HashMap;
+import javaslang.collection.Map;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -211,7 +213,21 @@ public class BratislavaTest {
         assertThat(tur.sumOffset(), is(Euro.empty));
 
 
+        tur.getOppgjer();
+
+
         printSluttrapport(tur);
+
+        Map<Deltakar, Sum> betalingHashSet = HashMap.of(
+                mads, new Euro(-268, 161),
+                marie, new Euro(43, 784),
+                paal, new Euro(-55, 976),
+                sofie, new Euro(45, 244),
+                lorents, new Euro(71, 319),
+                freddy, new Euro(83, 399),
+                edvard, new Euro(80, 389)
+        );
+        assertThat(tur.getOppgjer(), is(betalingHashSet));
     }
 
     private void printSluttrapport(Tur tur) {

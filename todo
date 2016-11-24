@@ -1,6 +1,16 @@
+småting
 - utvide sum til å handtere valuta
-- integrere mot vipps
-- tydeleg api - tar inn data, gir ut fordeling
-- sette opp maven/gradle
-- tidfesta kurs
 - lag readme.md
+- tydeleg api - tar inn data, gir ut fordeling
+
+integrasjonar
+- integrere mot vipps
+- integrere mot mcash?
+- tidfesta kurs
+- innføre json/jackson eller anna strukturert innlesing for inndata https://github.com/FasterXML/jackson-databind/
+
+overordna
+- gui av eit slag?
+- app?
+- kart-integrasjon?
+- tidslinje?

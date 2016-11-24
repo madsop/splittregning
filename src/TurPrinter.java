@@ -12,10 +12,10 @@ class TurPrinter {
                 .append(", ").append("pluss andel fellesutgifter på ").append(tur.getTotaltBruktKunFelles(deltakar))
                 .append(", som gir totale utgifter ").append(tur.getTotaltBruktMedFelles(deltakar))
                 .append(", som gir totalt uteståande for ").append(deltakar).append(" på ").append(tur.getUtestaaende(deltakar));
-        print(stringBuilder);
+        printText(stringBuilder);
     }
 
-    private void print(Object text) {
+    private void printText(Object text) {
         System.out.println(text);
     }
 
@@ -36,7 +36,7 @@ class TurPrinter {
                         .map(maaltid -> "Måltid " +maaltid +": " + getRettarForFellesPrint(deltakar, maaltid))
                         .mkString("\n")
         );
-        print(stringBuilder);
+        printText(stringBuilder);
     }
 
     private List<String> getRettarForFellesPrint(Deltakar deltakar, Maaltid maaltid) {

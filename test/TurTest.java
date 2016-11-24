@@ -1,3 +1,4 @@
+import javaslang.collection.HashMap;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -28,6 +29,27 @@ public class TurTest {
     public void getUtestaaendeReturnerer0VissIngentingErBetalt() {
         Tur tur = new Tur();
         assertThat(tur.getUtestaaende(new Deltakar("Mads")), is(Euro.empty));
+    }
+
+    @Test
+    public void testOppgjer() {
+        Deltakar mads = new Deltakar("Mads");
+        Deltakar marie = new Deltakar("Marie");
+        Tur tur = new Tur(mads, marie);
+
+        Rett rett1 = new Rett("Rett 1", new Euro(10, 0), mads, marie);
+        Maaltid maaltidEuro = new Maaltid("", rett1);
+        tur.addMaaltid(maaltidEuro);
+        maaltidEuro.addBetaling(mads, new Euro(10, 0));
+
+        Rett rett2 = new Rett("Rett 2", new Euro(10, 0), mads, marie);
+        Maaltid maaltidNOK = new Maaltid("", rett2);
+        tur.addMaaltid(maaltidNOK);
+        maaltidNOK.addBetaling(mads, new Euro(10, 0));
+
+        HashMap<Deltakar, Sum> oppgjer = HashMap.of(
+                mads, new Euro(-10, 0), marie, new Euro(10, 0));
+        assertThat(tur.getOppgjer(), is(oppgjer));
     }
 
 }

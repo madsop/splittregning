@@ -1,4 +1,5 @@
 import javaslang.collection.List;
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -13,7 +14,7 @@ public class MaaltidTest {
 
         Maaltid maaltid = new Maaltid("", rett);
         maaltid.setBetaler(null);
-        assertThat(maaltid.getUtestaaende(mads), is(new Euro(100, 0)));
+        assertThat(maaltid.getUtestaaende(mads), CoreMatchers.<Sum>is(new Euro(100, 0)));
     }
 
     @Test
@@ -23,7 +24,7 @@ public class MaaltidTest {
 
         Maaltid maaltid = new Maaltid("", rett);
         maaltid.setBetaler(mads);
-        assertThat(maaltid.getUtestaaende(mads), is(Euro.empty));
+        assertThat(maaltid.getUtestaaende(mads), CoreMatchers.<Sum>is(Euro.empty));
     }
 
     @Test
@@ -49,8 +50,8 @@ public class MaaltidTest {
 
         Maaltid maaltid = new Maaltid("", rett1, rett2, felles);
         maaltid.setBetaler(mads);
-        assertThat(maaltid.getUtestaaende(mads), is(new Euro(-50, 0)));
-        assertThat(maaltid.getUtestaaende(marie), is(new Euro(50, 0)));
+        assertThat(maaltid.getUtestaaende(mads), CoreMatchers.<Sum>is(new Euro(-50, 0)));
+        assertThat(maaltid.getUtestaaende(marie), CoreMatchers.<Sum>is(new Euro(50, 0)));
         assertThat(maaltid.getRetterFor(mads), is(List.of(rett1)));
     }
 

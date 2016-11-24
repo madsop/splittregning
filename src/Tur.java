@@ -1,4 +1,6 @@
+import javaslang.Tuple;
 import javaslang.collection.List;
+import javaslang.collection.Map;
 import lombok.Getter;
 
 import java.util.function.Predicate;
@@ -31,9 +33,8 @@ class Tur {
     }
 
     Sum getTotaltBetalt(Deltakar deltakar) {
-        List<Betaling> stream = maaltider
-                .flatMap(Maaltid::getBetalingar);
-        return stream
+        return maaltider
+                .flatMap(Maaltid::getBetalingar)
                 .filter(x -> x.getDeltakar().equals(deltakar))
                 .map(Betaling::getSum)
                 .fold(Euro.createNullSum(), Sum::pluss);
@@ -62,5 +63,9 @@ class Tur {
                 .map(Maaltid::getSum)
                 .map(Sum::convertToNOK)
                 .fold(NOK.createNullSum(), NOK::pluss);
+    }
+
+    Map<Deltakar, Sum> getOppgjer() {
+        return deltakarar.toMap(deltakar -> Tuple.of(deltakar, getUtestaaende(deltakar)));
     }
 }
