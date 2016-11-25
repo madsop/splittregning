@@ -1,6 +1,11 @@
 import javaslang.collection.List;
+import maaltid.Maaltid;
+import maaltid.Rett;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
+import tur.Deltakar;
+import sum.Euro;
+import sum.Sum;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

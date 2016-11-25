@@ -1,11 +1,17 @@
+package maaltid;
+
 import javaslang.collection.HashSet;
 import javaslang.collection.List;
 import javaslang.collection.Set;
 import lombok.Getter;
+import sum.Betaling;
+import tur.Deltakar;
+import sum.Euro;
+import sum.Sum;
 
 import java.util.Objects;
 
-class Maaltid {
+public class Maaltid {
 
     @Getter
     private String namn;
@@ -18,7 +24,7 @@ class Maaltid {
     @Getter
     private Set<Betaling> betalingar;
 
-    Maaltid(String namn, Rett... rettar) {
+    public Maaltid(String namn, Rett... rettar) {
         this.namn = namn;
         retter = List.of(rettar);
         betalingar = HashSet.empty();
@@ -29,7 +35,7 @@ class Maaltid {
         return namn + " (" + getSum() + ")";
     }
 
-    void addBetaling(Deltakar deltakar, Sum sum) {
+    public void addBetaling(Deltakar deltakar, Sum sum) {
         if (betaler != null) {
             throw new RuntimeException("Motstridande data");
         }
@@ -37,12 +43,12 @@ class Maaltid {
         betalingar = betalingar.add(new Betaling(deltakar, sum));
     }
 
-    void setBetaler(Deltakar deltakar) {
+    public void setBetaler(Deltakar deltakar) {
         this.betaler = deltakar;
         betalingar = betalingar.add(new Betaling(deltakar, getSum()));
     }
 
-    Sum getUtestaaende(Deltakar deltakar) {
+    public Sum getUtestaaende(Deltakar deltakar) {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
             return Euro.empty;
         }
@@ -53,11 +59,11 @@ class Maaltid {
 
     }
 
-    boolean deltokIkkePaaDetteMaaltidet(Deltakar deltakar) {
+    public boolean deltokIkkePaaDetteMaaltidet(Deltakar deltakar) {
         return !retter.exists(x -> x.harDeltakar(deltakar));
     }
 
-    Sum getBruktFor(Deltakar deltakar) {
+    public Sum getBruktFor(Deltakar deltakar) {
         return retter
                 .filter(x -> x.harDeltakar(deltakar))
                 .map(Rett::getBeloepPerPerson)
@@ -65,8 +71,8 @@ class Maaltid {
                 .pluss(getSumPerPersonForFellesRett(deltakar));
     }
 
-    Sum getSum() {
-        return retter.map(Rett::getBeloep).fold(Sum.createNull(retter.iterator().next().getBeloep().getClass()), Sum::pluss);
+    public Sum getSum() {
+        return retter.map(Rett::getBeloep).fold(Sum.createNull(retter.iterator().next().getBeloep().getValuta()), Sum::pluss);
     }
 
     private Sum getSumPerPersonForFellesRett(Deltakar deltakar) {
@@ -80,7 +86,7 @@ class Maaltid {
                 .delPaa(getAntallDeltakarar());
     }
 
-    long getAntallDeltakarar() {
+    public long getAntallDeltakarar() {
         return getDeltakarar().size();
     }
 
@@ -102,18 +108,18 @@ class Maaltid {
         );
     }
 
-    Sum getBetaltFelles(Deltakar deltakar) {
+    public Sum getBetaltFelles(Deltakar deltakar) {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
             return Euro.empty;
         }
         return getSumPerPersonForFellesRett(deltakar);
     }
 
-    List<Rett> getRetterFor(Deltakar deltakar) {
+    public List<Rett> getRetterFor(Deltakar deltakar) {
         return retter.filter(rett -> rett.harDeltakar(deltakar));
     }
 
-    List<Rett> getRetterFelles(Deltakar deltakar) {
+    public List<Rett> getRetterFelles(Deltakar deltakar) {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
             return List.empty();
         }

@@ -1,62 +1,66 @@
-import lombok.Getter;
+package sum;
 
-abstract class Sum<T extends Sum> {
+import lombok.Getter;
+import valuta.EuroValuta;
+import valuta.NOKValuta;
+import valuta.Valuta;
+
+public abstract class Sum<T extends Valuta> {
     @Getter
     protected double verdi;
 
-    Sum(double verdi) {
+    private T valuta;
+
+    Sum(double verdi, T valuta) {
         this.verdi = verdi;
+        this.valuta = valuta;
     }
 
-    Sum(int heltall, int fraction) {
+    Sum(int heltall, int fraction, T valuta) {
         if (heltall == 0 && fraction < 0) {
             verdi = Double.valueOf("-0." + Math.abs(fraction));
             return;
         }
         verdi = Double.parseDouble(heltall + "." + fraction);
-
+        this.valuta = valuta;
     }
 
-    abstract T create(double verdi);
+    abstract Sum<T> create(double verdi);
 
-    T pluss(T b) {
+    public Sum<T> pluss(Sum<? extends T> b) {
         return create(verdi + b.getVerdi());
     }
 
-    T minus(T b) {
+    public Sum<T> minus(Sum<T> b) {
         return create(verdi - b.getVerdi());
     }
 
-    T delPaa(long antallDeltakarar) {
+    public Sum<T> delPaa(long antallDeltakarar) {
         return create(verdi / antallDeltakarar);
     }
 
-    T ganger(int i) {
+    public Sum<T> ganger(int i) {
         return create(verdi*i);
     }
 
     @Override
     public String toString() {
-        return String.format("%.3f", verdi) +" " +getSymbol();
+        return String.format("%.3f", verdi) +" " +valuta.getSymbol();
     }
 
-    abstract String getSymbol();
-
-    String getOriginalAndNOK() {
+    public String getOriginalAndNOK() {
         return toString() +" ( " +convertToNOK() +")";
     }
 
-    NOK convertToNOK() {
-        return new NOK(this.verdi * getKurs1SaannTilNOK());
+    public NOK convertToNOK() {
+        return new NOK(this.verdi * valuta.getKurs1SaannTilNOK());
     }
 
-    abstract double getKurs1SaannTilNOK();
-
-    static <U extends Sum<U>> Sum createNull(Class<U> clazz){
-        if (clazz.equals(NOK.class)) {
+    public static <U extends Valuta> Sum createNull(Class<U> clazz){
+        if (clazz.equals(NOKValuta.class)) {
             return NOK.createNullSum();
         }
-        else if (clazz.equals(Euro.class)) {
+        else if (clazz.equals(EuroValuta.class)) {
             return Euro.createNullSum();
         }
         return null;
@@ -68,7 +72,7 @@ abstract class Sum<T extends Sum> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        T sum = (T) o;
+        Sum<T> sum = (Sum<T>) o;
 
         return Math.abs(sum.verdi - verdi) < 0.001;
     }
@@ -79,4 +83,5 @@ abstract class Sum<T extends Sum> {
         return (int) (temp ^ (temp >>> 32));
     }
 
+    public abstract Class<T> getValuta();
 }

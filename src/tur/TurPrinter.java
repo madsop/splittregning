@@ -1,8 +1,11 @@
+package tur;
+
 import javaslang.collection.List;
 import lombok.RequiredArgsConstructor;
+import maaltid.Maaltid;
 
 @RequiredArgsConstructor
-class TurPrinter {
+public class TurPrinter {
     private final Tur tur;
 
     private void printRapportFor(Deltakar deltakar) {
@@ -19,7 +22,7 @@ class TurPrinter {
         System.out.println(text);
     }
 
-    void printRapportMedRettarFor(Deltakar deltakar) {
+    public void printRapportMedRettarFor(Deltakar deltakar) {
         printRapportFor(deltakar);
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Dette var fordelt på \n").append(

@@ -1,7 +1,15 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javaslang.collection.HashMap;
 import javaslang.collection.Map;
+import maaltid.Maaltid;
 import org.junit.Before;
 import org.junit.Test;
+import tur.Deltakar;
+import sum.Euro;
+import sum.Sum;
+import tur.Tur;
+import tur.TurPrinter;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -255,6 +263,12 @@ public class BratislavaTest {
                 .append("\nUteståande Freddy: ").append(tur.getUtestaaende(freddy).getOriginalAndNOK())
                 .append("\nUteståande Edvard: ").append(tur.getUtestaaende(edvard).getOriginalAndNOK());
         System.out.println(stringBuilder);
+
+        try {
+            System.out.println(new ObjectMapper().writeValueAsString(tur));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     private void printSkiljeline() {

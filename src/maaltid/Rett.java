@@ -1,20 +1,24 @@
+package maaltid;
+
 import javaslang.collection.HashSet;
 import javaslang.collection.Set;
 import lombok.Getter;
+import tur.Deltakar;
+import sum.Sum;
 
 @Getter
-class Rett {
+public class Rett {
     private final String namn;
     private final Sum beloep;
     private final Set<Deltakar> deltakarar;
 
-    Rett(String namn, Sum beloep, Deltakar... deltakarar) {
+    public Rett(String namn, Sum beloep, Deltakar... deltakarar) {
         this.namn = namn;
         this.beloep = beloep;
         this.deltakarar = HashSet.of(deltakarar);
     }
 
-    Sum getBeloepPerPerson() {
+    public Sum getBeloepPerPerson() {
         return beloep.delPaa(deltakarar.size());
     }
 
@@ -23,7 +27,7 @@ class Rett {
         return namn + "(" + deltakarar.map(Object::toString).mkString (", ")  +", " +beloep +")";
     }
 
-    boolean harDeltakar(Deltakar deltakar) {
+    public boolean harDeltakar(Deltakar deltakar) {
         return deltakarar.contains(deltakar);
     }
 

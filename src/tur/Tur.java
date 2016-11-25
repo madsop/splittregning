@@ -1,38 +1,47 @@
+package tur;
+
 import javaslang.Tuple;
 import javaslang.collection.List;
 import javaslang.collection.Map;
 import lombok.Getter;
+import maaltid.Maaltid;
+import maaltid.Rett;
+import sum.Betaling;
+import sum.Euro;
+import sum.NOK;
+import sum.Sum;
+import valuta.Valuta;
 
 import java.util.function.Predicate;
 
-class Tur {
+public class Tur {
 
     @Getter
     private List<Maaltid> maaltider;
     private List<Deltakar> deltakarar;
 
-    Tur(Deltakar... deltakarar) {
+    public Tur(Deltakar... deltakarar) {
         this.maaltider = List.empty();
         this.deltakarar = List.of(deltakarar);
     }
 
-    void addMaaltid(Maaltid maaltid) {
+    public void addMaaltid(Maaltid maaltid) {
         maaltider = maaltider.append(maaltid);
     }
 
-    Sum getSum() {
+    public Sum getSum() {
         return maaltider.map(Maaltid::getSum).fold(Euro.createNullSum(), Sum::pluss);
     }
 
-    Sum getUtestaaende(Deltakar deltakar) {
+    public Sum getUtestaaende(Deltakar deltakar) {
         return maaltider.map(d -> d.getUtestaaende(deltakar)).fold(Euro.createNullSum(), Sum::pluss);
     }
 
-    Sum sumOffset() {
+    public Sum sumOffset() {
         return deltakarar.map(this::getUtestaaende).fold(Euro.createNullSum(), Sum::pluss);
     }
 
-    Sum getTotaltBetalt(Deltakar deltakar) {
+    public Sum getTotaltBetalt(Deltakar deltakar) {
         return maaltider
                 .flatMap(Maaltid::getBetalingar)
                 .filter(x -> x.getDeltakar().equals(deltakar))
@@ -40,15 +49,15 @@ class Tur {
                 .fold(Euro.createNullSum(), Sum::pluss);
     }
 
-    Sum getTotaltBruktUtenFelles(Deltakar deltakar) {
+    public Sum getTotaltBruktUtenFelles(Deltakar deltakar) {
         return getTotaltBruktGivenFilter(x -> x.harDeltakar(deltakar));
     }
 
-    Sum getTotaltBruktMedFelles(Deltakar deltakar) {
+    public Sum getTotaltBruktMedFelles(Deltakar deltakar) {
         return maaltider.map(maaltid -> maaltid.getBruktFor(deltakar)).fold(Euro.createNullSum(), Sum::pluss);
     }
 
-    Sum getTotaltBruktKunFelles(Deltakar deltakar) {
+    public Sum getTotaltBruktKunFelles(Deltakar deltakar) {
         return maaltider.map(maaltid -> maaltid.getBetaltFelles(deltakar)).fold(Euro.createNullSum(), Sum::pluss);
     }
 
@@ -58,14 +67,15 @@ class Tur {
                 .fold(Euro.createNullSum(), Sum::pluss);
     }
 
-    NOK getSumINOK() {
+    public <U extends Valuta> Sum<U> getSumINOK() {
         return maaltider
                 .map(Maaltid::getSum)
                 .map(Sum::convertToNOK)
-                .fold(NOK.createNullSum(), NOK::pluss);
+                .map(x -> (Sum) x)
+                .fold(NOK.createNullSum(), Sum::pluss);
     }
 
-    Map<Deltakar, Sum> getOppgjer() {
+    public Map<Deltakar, Sum> getOppgjer() {
         return deltakarar.toMap(deltakar -> Tuple.of(deltakar, getUtestaaende(deltakar)));
     }
 }

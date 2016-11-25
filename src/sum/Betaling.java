@@ -1,7 +1,11 @@
+package sum;
+
 import lombok.Data;
+import sum.Sum;
+import tur.Deltakar;
 
 @Data
-class Betaling {
+public class Betaling {
     private final Deltakar deltakar;
     private final Sum sum;
 }

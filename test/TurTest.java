@@ -1,5 +1,12 @@
 import javaslang.collection.HashMap;
+import maaltid.Maaltid;
+import maaltid.Rett;
 import org.junit.Test;
+import tur.Deltakar;
+import sum.Euro;
+import sum.NOK;
+import sum.Sum;
+import tur.Tur;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -37,12 +44,12 @@ public class TurTest {
         Deltakar marie = new Deltakar("Marie");
         Tur tur = new Tur(mads, marie);
 
-        Rett rett1 = new Rett("Rett 1", new Euro(10, 0), mads, marie);
+        Rett rett1 = new Rett("maaltid.Rett 1", new Euro(10, 0), mads, marie);
         Maaltid maaltidEuro = new Maaltid("", rett1);
         tur.addMaaltid(maaltidEuro);
         maaltidEuro.addBetaling(mads, new Euro(10, 0));
 
-        Rett rett2 = new Rett("Rett 2", new Euro(10, 0), mads, marie);
+        Rett rett2 = new Rett("maaltid.Rett 2", new Euro(10, 0), mads, marie);
         Maaltid maaltidNOK = new Maaltid("", rett2);
         tur.addMaaltid(maaltidNOK);
         maaltidNOK.addBetaling(mads, new Euro(10, 0));

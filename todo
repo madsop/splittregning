@@ -7,10 +7,13 @@ integrasjonar
 - integrere mot vipps
 - integrere mot mcash?
 - tidfesta kurs
-- innføre json/jackson eller anna strukturert innlesing for inndata https://github.com/FasterXML/jackson-databind/
+- innføre json/jackson eller anna strukturert innlesing for inndata
+-- https://github.com/FasterXML/jackson-databind/
+-- finn løysing på at euro er sum<euro> og dermed rekursiv og ikkje-serialiserbar til json
 
 overordna
 - gui av eit slag?
 - app?
 - kart-integrasjon?
 - tidslinje?
+- lag daemon-greier som kan halde programmmet køyrande - http://stackoverflow.com/questions/1036754/difference-between-wait-and-sleep

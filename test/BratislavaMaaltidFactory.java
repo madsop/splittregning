@@ -1,4 +1,8 @@
+import maaltid.Maaltid;
+import maaltid.Rett;
 import org.hamcrest.Matcher;
+import tur.Deltakar;
+import sum.Euro;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -82,7 +86,7 @@ class BratislavaMaaltidFactory {
         Rett vinFreddy = new Rett("Vin", createSum(7, 67), freddy);
         Rett vinMarie = new Rett("Vin", createSum(7, 67), marie);
         Rett vinEdvard = new Rett("Vin", createSum(7, 66), edvard);
-        //        Rett vin = new Rett("Vin", createSum(23, 0), marie, edvard, freddy);
+        //        maaltid.Rett vin = new maaltid.Rett("Vin", createSum(23, 0), marie, edvard, freddy);
 
         Rett zmzrlinovyPoharDessertSofie = new Rett("Zmzrlinovy Pohar dessert", createSum(4, 50), sofie);
         Rett zmzrlinovyPoharDessertFreddy = new Rett("Zmzrlinovy Pohar dessert", createSum(4, 50), freddy);
@@ -291,7 +295,7 @@ class BratislavaMaaltidFactory {
     }
 
     Maaltid getOvernattingBratislava() {
-        // TODO: Endre til NOK
+        // TODO: Endre til sum.NOK
         double verdi = 298.285;
         Euro beloep = new Euro(verdi);
         Rett leilighetBratislava = new Rett("Leilighet Bratislava", beloep, mads, marie, paal, sofie, lorents, freddy, edvard);
