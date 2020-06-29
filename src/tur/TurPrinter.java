@@ -28,14 +28,14 @@ public class TurPrinter {
         stringBuilder.append("Dette var fordelt på \n").append(
                 tur.getMaaltider()
                         .filter(maaltid -> !maaltid.deltokIkkePaaDetteMaaltidet(deltakar))
-                        .map(maaltid -> "Måltid " +maaltid +": " +maaltid.getRetterFor(deltakar))
+                        .map(maaltid -> "Måltid " +maaltid +": " +maaltid.listRetterFor(deltakar))
                         .mkString("\n")
 
         );
         stringBuilder.append("\n Pluss delar i fellesrettar/rettar eg ikkje har klart å spore tilbake \n").append(
                 tur.getMaaltider()
                         .filter(maaltid -> !maaltid.deltokIkkePaaDetteMaaltidet(deltakar))
-                        .filter(maaltid -> !maaltid.getRetterFelles(deltakar).isEmpty())
+                        .filter(maaltid -> !maaltid.listRetterFelles(deltakar).isEmpty())
                         .map(maaltid -> "Måltid " +maaltid +": " + getRettarForFellesPrint(deltakar, maaltid))
                         .mkString("\n")
         );
@@ -43,7 +43,7 @@ public class TurPrinter {
     }
 
     private List<String> getRettarForFellesPrint(Deltakar deltakar, Maaltid maaltid) {
-        return maaltid.getRetterFelles(deltakar)
+        return maaltid.listRetterFelles(deltakar)
                 .map(rett -> rett.getNamn() + ", andel " +rett.getBeloep().delPaa(maaltid.getAntallDeltakarar()));
     }
 }

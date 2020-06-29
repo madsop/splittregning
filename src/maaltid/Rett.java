@@ -1,5 +1,8 @@
 package maaltid;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javaslang.collection.HashSet;
 import javaslang.collection.Set;
 import lombok.Getter;
@@ -12,12 +15,14 @@ public class Rett {
     private final Sum beloep;
     private final Set<Deltakar> deltakarar;
 
-    public Rett(String namn, Sum beloep, Deltakar... deltakarar) {
+    @JsonCreator
+    public Rett(@JsonProperty("namn") String namn, @JsonProperty("beloep") Sum beloep, @JsonProperty("deltakarar") Deltakar... deltakarar) {
         this.namn = namn;
         this.beloep = beloep;
         this.deltakarar = HashSet.of(deltakarar);
     }
 
+    @JsonIgnore
     public Sum getBeloepPerPerson() {
         return beloep.delPaa(deltakarar.size());
     }

@@ -18,7 +18,7 @@ public class NOK extends Sum<NOKValuta> {
     }
 
     @Override
-    public Class<NOKValuta> getValuta() {
+    public Class<NOKValuta> figureValuta() {
         return NOKValuta.class;
     }
 

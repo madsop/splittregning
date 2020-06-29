@@ -1,5 +1,8 @@
 package maaltid;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javaslang.collection.HashSet;
 import javaslang.collection.List;
 import javaslang.collection.Set;
@@ -19,12 +22,11 @@ public class Maaltid {
     @Getter
     private List<Rett> retter;
 
-    private Deltakar betaler;
-
     @Getter
     private Set<Betaling> betalingar;
 
-    public Maaltid(String namn, Rett... rettar) {
+    @JsonCreator
+    public Maaltid(@JsonProperty("namn") String namn, @JsonProperty("retter") Rett... rettar) {
         this.namn = namn;
         retter = List.of(rettar);
         betalingar = HashSet.empty();
@@ -36,15 +38,10 @@ public class Maaltid {
     }
 
     public void addBetaling(Deltakar deltakar, Sum sum) {
-        if (betaler != null) {
-            throw new RuntimeException("Motstridande data");
-        }
-
         betalingar = betalingar.add(new Betaling(deltakar, sum));
     }
 
     public void setBetaler(Deltakar deltakar) {
-        this.betaler = deltakar;
         betalingar = betalingar.add(new Betaling(deltakar, getSum()));
     }
 
@@ -71,8 +68,9 @@ public class Maaltid {
                 .pluss(getSumPerPersonForFellesRett(deltakar));
     }
 
+    @JsonIgnore
     public Sum getSum() {
-        return retter.map(Rett::getBeloep).fold(Sum.createNull(retter.iterator().next().getBeloep().getValuta()), Sum::pluss);
+        return retter.map(Rett::getBeloep).fold(Sum.createNull(retter.iterator().next().getBeloep().figureValuta()), Sum::pluss);
     }
 
     private Sum getSumPerPersonForFellesRett(Deltakar deltakar) {
@@ -86,6 +84,7 @@ public class Maaltid {
                 .delPaa(getAntallDeltakarar());
     }
 
+    @JsonIgnore
     public long getAntallDeltakarar() {
         return getDeltakarar().size();
     }
@@ -108,18 +107,18 @@ public class Maaltid {
         );
     }
 
-    public Sum getBetaltFelles(Deltakar deltakar) {
+    public Sum collectBetaltFelles(Deltakar deltakar) {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
             return Euro.empty;
         }
         return getSumPerPersonForFellesRett(deltakar);
     }
 
-    public List<Rett> getRetterFor(Deltakar deltakar) {
+    public List<Rett> listRetterFor(Deltakar deltakar) {
         return retter.filter(rett -> rett.harDeltakar(deltakar));
     }
 
-    public List<Rett> getRetterFelles(Deltakar deltakar) {
+    public List<Rett> listRetterFelles(Deltakar deltakar) {
         if (deltokIkkePaaDetteMaaltidet(deltakar)) {
             return List.empty();
         }

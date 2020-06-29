@@ -11,4 +11,9 @@ public class EuroValuta extends Valuta {
     public String getSymbol() {
         return "€";
     }
+
+    @Override
+    public String toString() {
+        return "Euro (" +getSymbol() +")";
+    }
 }

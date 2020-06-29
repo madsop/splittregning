@@ -1,11 +1,14 @@
 package sum;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import valuta.EuroValuta;
 
 public class Euro extends Sum<EuroValuta> {
     public static final Euro empty = new Euro(0, 0);
 
-    public Euro(double verdi) {
+    @JsonCreator
+    public Euro(@JsonProperty("verdi") double verdi) {
         super(verdi, new EuroValuta());
     }
 
@@ -20,7 +23,7 @@ public class Euro extends Sum<EuroValuta> {
     }
 
     @Override
-    public Class<EuroValuta> getValuta() {
+    public Class<EuroValuta> figureValuta() {
         return EuroValuta.class;
     }
 

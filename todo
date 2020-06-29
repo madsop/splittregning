@@ -1,19 +1,20 @@
 småting
-- utvide sum til å handtere valuta
-- lag readme.md
-- tydeleg api - tar inn data, gir ut fordeling
+ lag readme.md
 
-integrasjonar
+nye features
 - integrere mot vipps
-- integrere mot mcash?
-- tidfesta kurs
-- innføre json/jackson eller anna strukturert innlesing for inndata
--- https://github.com/FasterXML/jackson-databind/
--- finn løysing på at euro er sum<euro> og dermed rekursiv og ikkje-serialiserbar til json
-
-overordna
-- gui av eit slag?
-- app?
+- integrere mot mcash? - bruk java-biblioteket ein kis har laga?
+-- https://dev.mca.sh/handlers.html
+-- https://github.com/ZarGate/OpenbravoPOS/commit/bfd32a718b5490154770ee85fad6747a6c33f3d6#diff-15
+-- https://github.com/ZarGate/OpenbravoPOS
+- tidfesta kurs - integrere mot nett-kurs-teneste??
 - kart-integrasjon?
 - tidslinje?
+
+frontend og api
+- gui av eit slag?
+-- https://www.google.no/search?q=easy+to+use+gui+framework+java&oq=easy+to+use+gui+framework+java&aqs=chrome..69i57j69i60j69i65j69i60l3.7830j0j7&sourceid=chrome&ie=UTF-8
+- app?
+- splitte i klient, common og eventuelt server
 - lag daemon-greier som kan halde programmmet køyrande - http://stackoverflow.com/questions/1036754/difference-between-wait-and-sleep
+-- http://stackoverflow.com/questions/1036754/difference-between-wait-and-sleep

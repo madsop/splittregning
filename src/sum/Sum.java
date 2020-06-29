@@ -1,10 +1,19 @@
 package sum;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
 import valuta.EuroValuta;
 import valuta.NOKValuta;
 import valuta.Valuta;
 
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value=Euro.class, name = "Euro"), @JsonSubTypes.Type(value = NOK.class, name = "NOK")})
+@JsonIgnoreProperties(value={ "originalAndNOK" }, allowGetters=true)
 public abstract class Sum<T extends Valuta> {
     @Getter
     protected double verdi;
@@ -45,7 +54,7 @@ public abstract class Sum<T extends Valuta> {
 
     @Override
     public String toString() {
-        return String.format("%.3f", verdi) +" " +valuta.getSymbol();
+        return String.format("%.2f", verdi) +" " +valuta.getSymbol();
     }
 
     public String getOriginalAndNOK() {
@@ -83,5 +92,5 @@ public abstract class Sum<T extends Valuta> {
         return (int) (temp ^ (temp >>> 32));
     }
 
-    public abstract Class<T> getValuta();
+    public abstract Class<T> figureValuta();
 }

@@ -10,4 +10,9 @@ public class NOKValuta extends Valuta {
     public String getSymbol() {
         return "NOK";
     }
+
+    @Override
+    public String toString() {
+        return "NOK";
+    }
 }
